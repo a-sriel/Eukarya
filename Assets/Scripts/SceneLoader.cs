@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Sceneloader : MonoBehaviour
+public class SceneLoader : MonoBehaviour
 {
     // Public function to load a scene by name
     public void NextScene()

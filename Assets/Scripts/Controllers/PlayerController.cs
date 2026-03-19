@@ -13,12 +13,18 @@ public class PlayerController : MonoBehaviour
 
     // Player's movement speed
     public float speed = 0;
+    private float walkSpeed;
+    private float sprintSpeed = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animation>();
+
+        // Store inputted speed
+        walkSpeed = speed;
+        sprintSpeed = walkSpeed * 1.5f;
     }
 
     // Called when move input detected
@@ -54,6 +60,17 @@ public class PlayerController : MonoBehaviour
             Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.D))
         {
             anim.Stop();
+        }
+
+        // Sprinting handling (Shift)
+        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
+        {
+            speed = sprintSpeed;
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
+        {
+            speed = walkSpeed;
         }
 
         // Attack handling (LMB)
