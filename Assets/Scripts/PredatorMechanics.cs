@@ -24,7 +24,7 @@ public class PredatorMechanics : MonoBehaviour
         print("Predator touched!");
         print(other.gameObject.tag);
 
-        // When player collides with prey, decrease player's health
+        // When player collides with predator, decrease player's health
         if (other.gameObject.CompareTag("Player"))
         {
             playerMechanics = player.GetComponent<PlayerMechanics>();

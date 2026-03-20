@@ -22,6 +22,13 @@ public class UIManager : MonoBehaviour
 
     public Sprite emptyEvo, fullEvo;
 
+    public TextMeshProUGUI lifeStageText;
+
+    void SetText()
+    {
+        lifeStageText.text = "Tiktaalik";
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -94,6 +101,5 @@ public class UIManager : MonoBehaviour
                 evo5.sprite = fullEvo;
                 break;
         }
-
     }
 }

@@ -32,7 +32,7 @@ public class PreyMechanics : MonoBehaviour
             if (health <= 0)
             {
                 playerMechanics = player.GetComponent<PlayerMechanics>();
-                playerMechanics.UpdateHealth(1);
+                playerMechanics.UpdateEvolutionProgress(1);
             }
         }
 
