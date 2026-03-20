@@ -6,16 +6,23 @@ using UnityEngine.SceneManagement;
 
 using TMPro;
 
-public class MenuUIManager : MonoBehaviour
+public class StartMenuUIManager : MonoBehaviour
 {
-    public GameObject pauseMenu;
-    private bool paused = false;
-    private float timePaused;
-
     // Public function to load a scene by name
     public void NextScene()
     {
         SceneManager.LoadScene("Stage4");
     }
 
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
 
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}
