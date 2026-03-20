@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using UnityEngine.SceneManagement;
-
 public class PlayerMechanics : MonoBehaviour
 {
     public int health = 50;
@@ -15,30 +13,17 @@ public class PlayerMechanics : MonoBehaviour
     private float cooldown = 0f;
     private bool cooldownActive;
 
+    // Start life cycle at stage 1; will be updated as player evolves
+    public int evolutionStage = 1;
+
+    private GameObject evolutionManagerObject;
+    private EvolutionManager evolutionManager;
+
     // Start is called before the first frame update
     void Start()
     {
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Predator"))
-        {
-            print("Enter Pred");
-        }
-
-        if (other.gameObject.CompareTag("Prey"))
-        {
-
-        }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Predator"))
-        {
-            print("Exit Pred");
-        }
+        evolutionManagerObject = GameObject.FindWithTag("EvolutionManager");
+        evolutionManager = evolutionManagerObject.GetComponent<EvolutionManager>();
     }
 
     // Update is called once per frame
@@ -56,17 +41,31 @@ public class PlayerMechanics : MonoBehaviour
             }
         }
 
+        // Restart cooldown timer
         if (evolutionProgress >= 1 && cooldown <= 0)
         {
-            cooldown = 5f;
+            cooldown = 10f;
         }
 
+        if (evolutionProgress < 5)
+        {
+            readyToEvolve = false;
+        }
+
+        // Toggle evolution function
         if (evolutionProgress == 5)
         {
             readyToEvolve = true;
+
+            if(Input.GetKeyDown(KeyCode.E))
+            {
+                evolutionManager.evolve();
+            }
         }
+
     }
 
+    // ******Getters for player stats
     public int GetHealth()
     {
         return health;
@@ -81,7 +80,9 @@ public class PlayerMechanics : MonoBehaviour
     {
         return evolutionProgress;
     }
-    // Setters for player stats
+    // End getters for player stats
+
+    // ******Setters for player stats
     public void UpdateHealth(int damageAmount)
     {
         health -= damageAmount;
@@ -96,9 +97,6 @@ public class PlayerMechanics : MonoBehaviour
     {
         evolutionProgress += progressAmount;
     }
-
-    public void evolve()
-    {
-        // SceneManager.LoadScene("Scene2");
-    }
+    // End setters for player stats
 }
+
