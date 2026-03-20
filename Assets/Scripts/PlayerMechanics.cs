@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 using UnityEngine.SceneManagement;
+
+using TMPro;
 
 public class PlayerMechanics : MonoBehaviour
 {
@@ -15,9 +18,24 @@ public class PlayerMechanics : MonoBehaviour
     private float cooldown = 0f;
     private bool cooldownActive;
 
+    // UI elements
+    // LHS screen:
+    public Image evo1, evo2, evo3, evo4, evo5;  // Evolution progress bar
+                                                // consists of 5 individual stars
+
+    // Top LHS screen:
+    public Image characterPortrait;
+    public TextMeshProUGUI healthText, staminaText, lifeStageText;
+
     // Start is called before the first frame update
     void Start()
     {
+        SetText();
+    }
+
+    void SetText()
+    {
+        lifeStageText.text = "Tiktaalik";
     }
 
     void OnTriggerEnter(Collider other)
@@ -48,7 +66,6 @@ public class PlayerMechanics : MonoBehaviour
         if (cooldown > 0)
         {
             cooldown -= Time.deltaTime;
-            print(cooldown);
 
             // If timer runs out and no progress made, decrease progress
             if (cooldown <= 0)
@@ -68,6 +85,20 @@ public class PlayerMechanics : MonoBehaviour
         }
     }
 
+    public int GetHealth()
+    {
+        return health;
+    }
+
+    public int GetStamina()
+    {
+        return stamina;
+    }
+
+    public int GetEvolutionProgress()
+    {
+        return evolutionProgress;
+    }
     // Setters for player stats
     public void UpdateHealth(int damageAmount)
     {
