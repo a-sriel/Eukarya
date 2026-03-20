@@ -5,6 +5,7 @@ using UnityEngine;
 public class PreyMechanics : MonoBehaviour
 {
     public int health = 20;
+    public int restoreAmount = 10;
 
     public GameObject player;
 
@@ -26,13 +27,18 @@ public class PreyMechanics : MonoBehaviour
         // When player collides with prey, decrease its health
         if (other.gameObject.CompareTag("Player"))
         {
-            health -= 5;
+            health -= damageAmount;
 
             // Update player's stats when enemy is defeated ("eaten")
             if (health <= 0)
             {
                 playerMechanics = player.GetComponent<PlayerMechanics>();
+
+                // Gain 1 evolution point
                 playerMechanics.UpdateEvolutionProgress(1);
+
+                // Replenish health
+                playerMechanics.UpdateHealth(-1*restoreAmount);
             }
         }
 

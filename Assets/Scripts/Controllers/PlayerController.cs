@@ -49,6 +49,18 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Freeze player character when not moving
+        /*
+        if (Input.anyKey)
+        {
+            rb.isKinematic = false;
+        }
+        else
+        {
+            rb.isKinematic = true;
+        }
+        */  
+
         // Walking handling (WASD)
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || 
             Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))

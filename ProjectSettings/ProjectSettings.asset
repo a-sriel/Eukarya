@@ -743,7 +743,13 @@ PlayerSettings:
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
   cloudServicesEnabled:
+    Build: 0
+    Game Performance: 0
+    Legacy Analytics: 0
+    Purchasing: 0
+    UDP: 0
     UNet: 1
+    Unity Ads: 0
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -765,11 +771,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: ce8c86f4-eafc-4cc0-af2c-e1451cc866da
+  cloudProjectId: cb569fe4-254b-413d-bb47-8aed1f0d45df
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: Eukarya
-  organizationId: ragoel123
+  organizationId: threefangs
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

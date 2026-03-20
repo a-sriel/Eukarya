@@ -5,6 +5,7 @@ using UnityEngine;
 public class PredatorMechanics : MonoBehaviour
 {
     public int health = 20;
+    public int depleteAmount = 2;
 
     public GameObject player;
 
@@ -16,7 +17,6 @@ public class PredatorMechanics : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     void OnTriggerEnter(Collider other)
@@ -24,13 +24,22 @@ public class PredatorMechanics : MonoBehaviour
         print("Predator touched!");
         print(other.gameObject.tag);
 
-        // When player collides with predator, decrease player's health
+
         if (other.gameObject.CompareTag("Player"))
         {
-            playerMechanics = player.GetComponent<PlayerMechanics>();
-            playerMechanics.UpdateHealth(2);
-        }
+            // When player collides with predator, decrease its health
+            health -= damageAmount;
 
+            // When player collides with predator, decrease player's health
+            playerMechanics = player.GetComponent<PlayerMechanics>();
+            playerMechanics.UpdateHealth(depleteAmount);
+
+            // Update player's stats when enemy is defeated
+            if (health <= 0)
+            {
+                playerMechanics.UpdateEvolutionProgress(1);
+            }
+        }
     }
 
     // Update is called once per frame
