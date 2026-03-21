@@ -7,16 +7,18 @@ public class PredatorMechanics : MonoBehaviour
     public int health = 20;
     public int depleteAmount = 2;
 
-    public GameObject player;
-
     // How much damage to take from player
     public int damageAmount = 10;
+
+    private GameObject player;
 
     private PlayerMechanics playerMechanics;
 
     // Start is called before the first frame update
     void Start()
     {
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null) player = playerObj;
     }
 
     void OnTriggerEnter(Collider other)
@@ -31,7 +33,7 @@ public class PredatorMechanics : MonoBehaviour
             health -= damageAmount;
 
             // When player collides with predator, decrease player's health
-            playerMechanics = player.GetComponent<PlayerMechanics>();
+            playerMechanics = other.GetComponentInParent<PlayerMechanics>();
             playerMechanics.UpdateHealth(depleteAmount);
 
             // Update player's stats when enemy is defeated

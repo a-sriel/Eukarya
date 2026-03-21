@@ -65,6 +65,9 @@ crashlytics-build.properties
 # TextMesh Pro local settings
 [Aa]ssets/TextMesh Pro/
 
+# UI Toolkit local settings
+[Aa]ssets/UI Toolkit/
+
 # JetBrains
 .idea/
 *.sln.iml

@@ -7,17 +7,18 @@ public class PreyMechanics : MonoBehaviour
     public int health = 20;
     public int restoreAmount = 10;
 
-    public GameObject player;
-
     // How much damage to take from player
     public int damageAmount = 10;
+
+    private GameObject player;
 
     private PlayerMechanics playerMechanics;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null) player = playerObj;
     }
 
     void OnTriggerEnter(Collider other)
@@ -32,7 +33,7 @@ public class PreyMechanics : MonoBehaviour
             // Update player's stats when enemy is defeated ("eaten")
             if (health <= 0)
             {
-                playerMechanics = player.GetComponent<PlayerMechanics>();
+                playerMechanics = other.GetComponent<PlayerMechanics>();
 
                 // Gain 1 evolution point
                 playerMechanics.UpdateEvolutionProgress(1);
