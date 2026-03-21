@@ -101,6 +101,3 @@ local.properties
 
 # iOS
 *.xcworkspace
-
-# NuGet
-packages/
