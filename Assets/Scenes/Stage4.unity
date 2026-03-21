@@ -1518,7 +1518,7 @@ MonoBehaviour:
   predatorCount: 2
   preyCount: 6
   spawnAreaSize: {x: 200, y: 200}
-  ySpawnLevel: 1
+  ySpawnLevel: 2.5
 --- !u!4 &629243405
 Transform:
   m_ObjectHideFlags: 0

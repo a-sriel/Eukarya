@@ -95,11 +95,15 @@ public class Spawner : MonoBehaviour
             Vector3 spawnPosition = new Vector3(
                 transform.position.x + randomX,
                 ySpawnLevel,
-                transform.position.y + randomY
+                transform.position.z + randomY
             );
 
-            // Parent newly spawned objects to their respective group
+            print(ySpawnLevel);
+
+            // Add entity to game
             GameObject activePrefab = Instantiate(prefab, spawnPosition, Quaternion.identity);
+
+            // Parent newly spawned objects to their respective group
             activePrefab.transform.parent = prefabGroup.transform;
         }
     }
