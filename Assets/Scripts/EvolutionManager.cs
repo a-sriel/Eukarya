@@ -43,6 +43,9 @@ public class EvolutionManager : MonoBehaviour
             case 2:
                 SceneManager.LoadScene("Stage4");
                 break;
+            case 3:
+                SceneManager.LoadScene("Stage5");
+                break;
         }
     }
 
