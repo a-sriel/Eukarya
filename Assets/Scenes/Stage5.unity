@@ -3498,6 +3498,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree1 (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 1246480401368501288, guid: 0460b07f32ca99547854f9271df0288d, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2683230082378939093, guid: 0460b07f32ca99547854f9271df0288d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 39.30838
@@ -6872,7 +6876,6 @@ Transform:
   m_Children:
   - {fileID: 7969375938216028137}
   - {fileID: 909161500}
-  - {fileID: 2647761963943675272}
   - {fileID: 6345123449107420438}
   - {fileID: 2005457440707637156}
   m_Father: {fileID: 0}
@@ -7374,21 +7377,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2647761963943675272
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3455789058525437746}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 543450651813887552}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2752955711590797465
 Transform:
   m_ObjectHideFlags: 0
@@ -7497,22 +7485,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1343831532320082178}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3455789058525437746
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2647761963943675272}
-  m_Layer: 0
-  m_Name: durlstotherium
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!4 &3567818344428347825
 Transform:
   m_ObjectHideFlags: 0

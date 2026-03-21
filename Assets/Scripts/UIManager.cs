@@ -26,7 +26,8 @@ public class UIManager : MonoBehaviour
 
     void SetText()
     {
-        lifeStageText.text = "Tiktaalik";
+        string lifeStageName = player.transform.GetChild(3).name;
+        lifeStageText.text = lifeStageName;
     }
 
     // Start is called before the first frame update
@@ -44,6 +45,8 @@ public class UIManager : MonoBehaviour
         staminaBar.maxValue = maxStamina;
         staminaBar.value = maxStamina;
         currentStamina = maxStamina;
+
+        SetText();
     }
 
     // Update is called once per frame
