@@ -41,8 +41,14 @@ public class EvolutionManager : MonoBehaviour
                 SceneManager.LoadScene("Stage2");
                 break;
             case 2:
-                SceneManager.LoadScene("Stage2");
+                SceneManager.LoadScene("Stage4");
                 break;
         }
+    }
+
+    // ******Getter
+    public int GetEvolutionStage()
+    {
+        return evolutionStage;
     }
 }

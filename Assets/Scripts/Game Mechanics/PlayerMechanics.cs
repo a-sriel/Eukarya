@@ -14,7 +14,7 @@ public class PlayerMechanics : MonoBehaviour
     private bool cooldownActive;
 
     // Start life cycle at stage 1; will be updated as player evolves
-    public int evolutionStage = 1;
+    public int evolutionStage;
 
     private GameObject evolutionManagerObject;
     private EvolutionManager evolutionManager;
@@ -24,6 +24,8 @@ public class PlayerMechanics : MonoBehaviour
     {
         evolutionManagerObject = GameObject.FindWithTag("EvolutionManager");
         evolutionManager = evolutionManagerObject.GetComponent<EvolutionManager>();
+
+        evolutionStage = evolutionManager.GetEvolutionStage();
     }
 
     // Update is called once per frame
