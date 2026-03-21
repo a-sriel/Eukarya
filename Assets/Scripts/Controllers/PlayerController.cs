@@ -34,6 +34,9 @@ public class PlayerController : MonoBehaviour
         movementY = movementVector.y;
     }
 
+    public float rotationSpeed = 10f;
+    public float facingOffset = 0f;
+
     // Called once per fixed framerate frame
     void FixedUpdate()
     {
@@ -41,6 +44,13 @@ public class PlayerController : MonoBehaviour
 
         // Move the player
         rb.AddForce(movement * speed);
+
+        // Rotate to face movement direction
+        if (movement != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(movement) * Quaternion.Euler(0f, facingOffset, 0f);
+            rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime));
+        }
     }
 
     // Update is called once per frame
