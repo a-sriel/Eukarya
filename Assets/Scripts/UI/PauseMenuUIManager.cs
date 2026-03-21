@@ -19,6 +19,10 @@ public class PauseMenuUIManager : MonoBehaviour
         timePaused = paused ? 0f : 1f;
         pauseMenu.SetActive(paused);
         Time.timeScale = timePaused;
+
+        // Lock/unlock cursor with pause state
+        Cursor.lockState = paused ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = paused;
     }
 
     public void goToMainMenu()

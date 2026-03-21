@@ -2016,6 +2016,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 919132147827238138}
+  distance: 25
+  mouseSensitivity: 3
+  pitchMin: -20
+  pitchMax: 60
 --- !u!1001 &611259746
 PrefabInstance:
   m_ObjectHideFlags: 0

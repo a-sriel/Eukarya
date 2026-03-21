@@ -36,17 +36,25 @@ public class PlayerController : MonoBehaviour
 
     public float rotationSpeed = 10f;
     public float facingOffset = 0f;
+    public bool enableRotation = true;
 
     // Called once per fixed framerate frame
     void FixedUpdate()
     {
         Vector3 movement = new Vector3(movementX, 0.0f, movementY);
 
+        // Transform movement to be relative to camera's horizontal facing
+        if (Camera.main != null)
+        {
+            Quaternion camYaw = Quaternion.Euler(0f, Camera.main.transform.eulerAngles.y, 0f);
+            movement = camYaw * movement;
+        }
+
         // Move the player
         rb.AddForce(movement * speed);
 
-        // Rotate to face movement direction
-        if (movement != Vector3.zero)
+        // Rotate to face movement direction (disabled for 2D scenes)
+        if (enableRotation && movement != Vector3.zero)
         {
             Quaternion targetRotation = Quaternion.LookRotation(movement) * Quaternion.Euler(0f, facingOffset, 0f);
             rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime));
