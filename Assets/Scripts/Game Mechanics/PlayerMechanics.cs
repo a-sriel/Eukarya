@@ -46,7 +46,7 @@ public class PlayerMechanics : MonoBehaviour
         // Restart cooldown timer
         if (evolutionProgress >= 1 && cooldown <= 0)
         {
-            cooldown = 10f;
+            cooldown = 25f;
         }
 
         if (evolutionProgress < 5)
@@ -64,7 +64,6 @@ public class PlayerMechanics : MonoBehaviour
                 evolutionManager.evolve();
             }
         }
-
     }
 
     // ******Getters for player stats

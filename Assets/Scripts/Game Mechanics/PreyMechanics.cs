@@ -23,8 +23,6 @@ public class PreyMechanics : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        print("Prey touched!");
-        print(other.gameObject.tag);
         // When player collides with prey, decrease its health
         if (other.gameObject.CompareTag("Player"))
         {

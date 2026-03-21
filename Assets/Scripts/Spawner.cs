@@ -98,8 +98,6 @@ public class Spawner : MonoBehaviour
                 transform.position.z + randomY
             );
 
-            print(ySpawnLevel);
-
             // Add entity to game
             GameObject activePrefab = Instantiate(prefab, spawnPosition, Quaternion.identity);
 
