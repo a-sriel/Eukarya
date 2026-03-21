@@ -51,7 +51,7 @@ public class PreyMechanics : MonoBehaviour
         // When health is depleted, disappear from game
         if (health == 0)
         {
-            transform.parent.gameObject.SetActive(false);
+            Destroy(transform.parent.gameObject);
         }
     }
 }
