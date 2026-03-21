@@ -33,7 +33,7 @@ public class PreyMechanics : MonoBehaviour
             // Update player's stats when enemy is defeated ("eaten")
             if (health <= 0)
             {
-                playerMechanics = other.GetComponent<PlayerMechanics>();
+                playerMechanics = other.GetComponentInParent<PlayerMechanics>();
 
                 // Gain 1 evolution point
                 playerMechanics.UpdateEvolutionProgress(1);
