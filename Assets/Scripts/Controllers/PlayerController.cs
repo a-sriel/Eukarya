@@ -14,6 +14,10 @@ public class PlayerController : MonoBehaviour
     private float walkSpeed;
     private float sprintSpeed = 0;
 
+    // Stats for swimming scenes
+    private Vector3 floating;
+    public float floatForce = 2.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +26,8 @@ public class PlayerController : MonoBehaviour
         // Store inputted speed
         walkSpeed = speed;
         sprintSpeed = walkSpeed * 1.5f;
+
+        floating = new Vector3(0.0f, floatForce, 0.0f);
     }
 
     // Called when move input detected
@@ -37,6 +43,9 @@ public class PlayerController : MonoBehaviour
     public float rotationSpeed = 10f;
     public float facingOffset = 0f;
     public bool enableRotation = true;
+
+    // Toggle for swimming scenes
+    public bool enableFloating = false;
 
     // Called once per fixed framerate frame
     void FixedUpdate()
@@ -64,28 +73,37 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Freeze player character when not moving
-        /*
-        if (Input.anyKey)
-        {
-            rb.isKinematic = false;
-        }
-        else
-        {
-            rb.isKinematic = true;
-        }
-        */  
-
-
         // Sprinting handling (Shift)
         if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
         {
-            speed = sprintSpeed;
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) ||
+                Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+            {
+                speed = sprintSpeed;
+            }
         }
 
         if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
         {
             speed = walkSpeed;
+        }
+
+        // Floating handling for swimming (Spacebar)
+        if (Input.GetKey(KeyCode.Space))
+        {
+            rb.AddForce(Physics.gravity, ForceMode.Acceleration);
+            rb.AddForce(floating * 0.25f, ForceMode.Impulse);
+        }
+
+        if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) &&
+                !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D))
+        {
+            // Sinking handling (Shift with no keypress)
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+            {
+                rb.AddForce(Physics.gravity, ForceMode.Acceleration);
+                rb.AddForce(floating * -10.25f, ForceMode.Force);
+            }
         }
     }
 }
