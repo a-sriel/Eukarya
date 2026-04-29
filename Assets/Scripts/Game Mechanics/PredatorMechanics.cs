@@ -16,6 +16,9 @@ public class PredatorMechanics : MonoBehaviour
 
     bool inRadius = false;
 
+    float cooldownPeriod = 3f;
+    float attackCooldown = 0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,19 +47,36 @@ public class PredatorMechanics : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // ****** Attack timer
+        // Tick
+        if (attackCooldown > 0)
+        {
+            attackCooldown -= Time.deltaTime;
+
+            // Respawn missing entities once timer runs out
+            if (attackCooldown <= 0)
+            {
+            }
+        }
+
         if (inRadius)
         {
             playerMechanics = player.GetComponentInParent<PlayerMechanics>();
 
+            // Attack player, then initiate cooldown timer
+            if (attackCooldown <= 0)
+            {
+                attackCooldown = cooldownPeriod;
+
+                // When player collides with predator, decrease player's health
+                playerMechanics.UpdateHealth(depleteAmount);
+            }
 
             // Check if attack animation is playing
             if (playerMechanics.isAttacking())
             {
                 // When player collides with predator, decrease its health
                 health -= damageAmount;
-
-                // When player collides with predator, decrease player's health
-                playerMechanics.UpdateHealth(depleteAmount);
 
                 // Update player's stats when enemy is defeated
                 if (health <= 0)
