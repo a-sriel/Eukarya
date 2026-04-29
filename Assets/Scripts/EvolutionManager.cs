@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 public class EvolutionManager : MonoBehaviour
 {
     // Start life cycle at stage 1; will be updated as player evolves
-    public int evolutionStage = 1;
+    public int evolutionStage = 0;
+    private int oldEvolutionStage = 0;
 
     void Awake()
     {
@@ -18,32 +19,41 @@ public class EvolutionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        oldEvolutionStage = evolutionStage;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (evolutionStage != oldEvolutionStage)
+        {
+            switchScene();
+            oldEvolutionStage = evolutionStage;
+        }
     }
 
     public void evolve()
     {
         evolutionStage++;
-        switchScene();
     }
 
     public void switchScene()
     {
         switch (evolutionStage)
         {
-            case 1:
-                SceneManager.LoadScene("Stage2");
+            case 0:
+                SceneManager.LoadScene("TitleScreen");
                 break;
             case 2:
-                SceneManager.LoadScene("Stage4");
+                SceneManager.LoadScene("Stage2");
                 break;
             case 3:
+                SceneManager.LoadScene("Stage3");
+                break;
+            case 4:
+                SceneManager.LoadScene("Stage4");
+                break;
+            case 5:
                 SceneManager.LoadScene("Stage5");
                 break;
         }
