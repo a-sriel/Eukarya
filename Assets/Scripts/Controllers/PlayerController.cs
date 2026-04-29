@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     private float movementY;
 
     // Player's movement speed
-    public float speed;
+    private float speed;
     public float walkSpeed = 15;
     private float sprintSpeed = 0;
 
