@@ -44,6 +44,9 @@ public class EvolutionManager : MonoBehaviour
             case 0:
                 SceneManager.LoadScene("TitleScreen");
                 break;
+            case 1:
+                SceneManager.LoadScene("Stage1");
+                break;
             case 2:
                 SceneManager.LoadScene("Stage2");
                 break;
