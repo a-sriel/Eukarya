@@ -5059,13 +5059,17 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1907229479332029189, guid: 43f9f8c88ecefd84bb09aad74ae649dc, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6e8e71a6260e9384c83c1d323a1afb29, type: 2}
     - target: {fileID: 2166548173564667490, guid: 43f9f8c88ecefd84bb09aad74ae649dc, type: 3}
       propertyPath: walkSpeed
       value: 40000
       objectReference: {fileID: 0}
     - target: {fileID: 2166548173564667490, guid: 43f9f8c88ecefd84bb09aad74ae649dc, type: 3}
       propertyPath: enableRotation
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3226153377036353446, guid: 43f9f8c88ecefd84bb09aad74ae649dc, type: 3}
       propertyPath: m_Name
@@ -5074,7 +5078,7 @@ PrefabInstance:
     - target: {fileID: 3585800835599375309, guid: 43f9f8c88ecefd84bb09aad74ae649dc, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+      objectReference: {fileID: 4536773283001372330, guid: ac1885865b53b7f45ab23922f17367fa, type: 3}
     - target: {fileID: 4414471156461641500, guid: 43f9f8c88ecefd84bb09aad74ae649dc, type: 3}
       propertyPath: m_Animations.Array.size
       value: 2

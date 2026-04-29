@@ -59,6 +59,12 @@ public class EvolutionManager : MonoBehaviour
             case 5:
                 SceneManager.LoadScene("Stage5");
                 break;
+            case 6:
+                SceneManager.LoadScene("Stage6_Jump");
+                break;
+            case 7:
+                SceneManager.LoadScene("Stage6_Fly");
+                break;
         }
     }
 
