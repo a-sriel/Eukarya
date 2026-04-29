@@ -101,22 +101,31 @@ public class PlayerController : MonoBehaviour
             speed = walkSpeed;
         }
 
-        // Floating handling for swimming (Spacebar)
-        if (Input.GetKey(KeyCode.Space))
+        if (enableFloating)
         {
-            rb.AddForce(Physics.gravity, ForceMode.Acceleration);
-            rb.AddForce(floating * 0.25f, ForceMode.Impulse);
-        }
-
-        if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) &&
-                !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D))
-        {
-            // Sinking handling (Shift with no keypress)
-            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+            // Floating handling for swimming (Spacebar)
+            if (Input.GetKey(KeyCode.Space))
             {
                 rb.AddForce(Physics.gravity, ForceMode.Acceleration);
-                rb.AddForce(floating * -10.25f, ForceMode.Force);
+                rb.AddForce(floating * 0.25f, ForceMode.Impulse);
+            }
+
+            if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) &&
+                    !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D))
+            {
+                // Sinking handling (Shift with no keypress)
+                if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+                {
+                    rb.AddForce(Physics.gravity, ForceMode.Acceleration);
+                    rb.AddForce(floating * -10.25f, ForceMode.Force);
+                }
             }
         }
+
+    }
+
+    public void enableSwimming(bool flag)
+    {
+        enableFloating = flag;
     }
 }
