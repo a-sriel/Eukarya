@@ -14,6 +14,8 @@ public class PreyMechanics : MonoBehaviour
 
     private PlayerMechanics playerMechanics;
 
+    bool inRadius = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,31 +23,47 @@ public class PreyMechanics : MonoBehaviour
         if (playerObj != null) player = playerObj;
     }
 
+    // Detect if within player hitbox radius
     void OnTriggerEnter(Collider other)
     {
-        // When player collides with prey, decrease its health
         if (other.gameObject.CompareTag("Player"))
         {
-            health -= damageAmount;
-
-            // Update player's stats when enemy is defeated ("eaten")
-            if (health <= 0)
-            {
-                playerMechanics = other.GetComponentInParent<PlayerMechanics>();
-
-                // Gain 1 evolution point
-                playerMechanics.UpdateEvolutionProgress(1);
-
-                // Replenish health
-                playerMechanics.UpdateHealth(-1*restoreAmount);
-            }
+            inRadius = true;
         }
+    }
 
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            inRadius = false;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (inRadius)
+        {
+            playerMechanics = player.GetComponentInParent<PlayerMechanics>();
+            // Check if attack animation is playing
+            if (playerMechanics.isAttacking())
+            {
+                print("Attacking now");
+                // When player attacks prey, decrease its health
+                health -= damageAmount;
+
+                // Update player's stats when enemy is defeated ("eaten")
+                if (health <= 0)
+                {
+                    // Give player 1 evolution point
+                    playerMechanics.UpdateEvolutionProgress(1);
+
+                    // Replenish player health
+                    playerMechanics.UpdateHealth(-1 * restoreAmount);
+                }
+            }
+        }
         // When health is depleted, disappear from game
         if (health == 0)
         {

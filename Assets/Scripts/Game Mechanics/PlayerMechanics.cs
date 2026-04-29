@@ -18,21 +18,29 @@ public class PlayerMechanics : MonoBehaviour
 
     private GameObject evolutionManagerObject;
     private EvolutionManager evolutionManager;
+    private AnimationController animationController;
 
     bool dead = false;
+    bool attacking = false;
+    bool freezeInPlace = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        animationController = gameObject.GetComponent<AnimationController>();
+
         evolutionManagerObject = GameObject.FindWithTag("EvolutionManager");
         evolutionManager = evolutionManagerObject.GetComponent<EvolutionManager>();
 
         evolutionStage = evolutionManager.GetEvolutionStage();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        attacking = animationController.isAttacking();
+
         // Each evolution progress point has a cooldown timer
         if (cooldown > 0)
         {
@@ -70,7 +78,6 @@ public class PlayerMechanics : MonoBehaviour
         if (health <= 0)
         {
             dead = true;
-            print("DEAD");
         }
     }
 
@@ -116,6 +123,12 @@ public class PlayerMechanics : MonoBehaviour
     {
         return evolutionStage;
     }
+
+    public bool isAttacking()
+    {
+        return attacking;
+    }
+
     // End setters for player stats
 }
 

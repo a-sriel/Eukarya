@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    private AnimationController animationController;
+
     private Rigidbody rb;
     private float movementX;
     private float movementY;
@@ -18,6 +20,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 floating;
     public float floatForce = 2.0f;
 
+    bool stopMoving = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,9 +29,11 @@ public class PlayerController : MonoBehaviour
 
         // Store inputted speed
         walkSpeed = speed;
-        sprintSpeed = walkSpeed * 1.5f;
+        sprintSpeed = walkSpeed * 2.5f;
 
         floating = new Vector3(0.0f, floatForce, 0.0f);
+
+        animationController = gameObject.GetComponent<AnimationController>();
     }
 
     // Called when move input detected
@@ -73,6 +79,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        stopMoving = animationController.specialAnimationPlaying();
+
+        if (stopMoving)
+            speed = 0;
+        else
+            speed = walkSpeed;
+
         // Sprinting handling (Shift)
         if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
         {

@@ -9,6 +9,12 @@ public class AnimationController : MonoBehaviour
 
     public float moveThreshold = 0.1f;
 
+    bool attacking = false;
+    bool attackAnimationPlaying = false;
+
+    // Freeze player movement if special animation is playing
+    bool freezePlayer = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,25 +25,48 @@ public class AnimationController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Reset attack; only attack for one frame
+        attacking = false;
+
+        if (anim.IsPlaying("attack"))
+            freezePlayer = true;
+        else
+            freezePlayer = false;
+
         // Walking handling (velocity-based)
         bool isMoving = rb.velocity.magnitude > moveThreshold;
-
-        if (isMoving)
+        if (!anim.IsPlaying("attack"))
         {
-            if (!anim.IsPlaying("walk"))
-                anim.Play("walk");
-            anim["walk"].speed = 1f;
+            if (isMoving)
+            {
+                if (!anim.IsPlaying("walk"))
+                    anim.Play("walk");
+                anim["walk"].speed = 1f;
+            }
+            else
+            {
+                if (anim.IsPlaying("walk"))
+                    anim["walk"].speed = 0f;
+            }
         }
-        else
-        {
-            if (anim.IsPlaying("walk"))
-                anim["walk"].speed = 0f;
-        }
+        
 
-        // Attack handling (LMB)
-        if (Input.GetMouseButtonDown(0))
+        // Attack handling (LMB); only attack while attack animation is not already playing
+        // Prevents spamming attack and forces cooldown
+        if (Input.GetMouseButtonDown(0) && !anim.IsPlaying("attack"))
         {
             anim.Play("attack");
+            attacking = true;
         }
+    }
+
+    public bool isAttacking()
+    {
+        return attacking;
+    }
+
+    public bool specialAnimationPlaying()
+    {
+        return freezePlayer;
     }
 }

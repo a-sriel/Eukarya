@@ -14,6 +14,8 @@ public class PredatorMechanics : MonoBehaviour
 
     private PlayerMechanics playerMechanics;
 
+    bool inRadius = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,28 +23,48 @@ public class PredatorMechanics : MonoBehaviour
         if (playerObj != null) player = playerObj;
     }
 
+
+    // Detect if within player hitbox radius
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            // When player collides with predator, decrease its health
-            health -= damageAmount;
+            inRadius = true;
+        }
+    }
 
-            // When player collides with predator, decrease player's health
-            playerMechanics = other.GetComponentInParent<PlayerMechanics>();
-            playerMechanics.UpdateHealth(depleteAmount);
-
-            // Update player's stats when enemy is defeated
-            if (health <= 0)
-            {
-                playerMechanics.UpdateEvolutionProgress(1);
-            }
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            inRadius = false;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (inRadius)
+        {
+            playerMechanics = player.GetComponentInParent<PlayerMechanics>();
+
+
+            // Check if attack animation is playing
+            if (playerMechanics.isAttacking())
+            {
+                // When player collides with predator, decrease its health
+                health -= damageAmount;
+
+                // When player collides with predator, decrease player's health
+                playerMechanics.UpdateHealth(depleteAmount);
+
+                // Update player's stats when enemy is defeated
+                if (health <= 0)
+                {
+                    playerMechanics.UpdateEvolutionProgress(1);
+                }
+            }
+        }
         // When health is depleted, disappear from game
         if (health == 0)
         {
