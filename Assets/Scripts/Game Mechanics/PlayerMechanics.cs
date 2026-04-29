@@ -19,6 +19,8 @@ public class PlayerMechanics : MonoBehaviour
     private GameObject evolutionManagerObject;
     private EvolutionManager evolutionManager;
 
+    bool dead = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,6 +66,17 @@ public class PlayerMechanics : MonoBehaviour
                 evolutionManager.evolve();
             }
         }
+
+        if (health <= 0)
+        {
+            dead = true;
+            print("DEAD");
+        }
+    }
+
+    public bool isDead()
+    {
+        return dead;
     }
 
     // ******Getters for player stats
@@ -97,6 +110,11 @@ public class PlayerMechanics : MonoBehaviour
     public void UpdateEvolutionProgress(int progressAmount)
     {
         evolutionProgress += progressAmount;
+    }
+
+    public int GetLifeStage()
+    {
+        return evolutionStage;
     }
     // End setters for player stats
 }
