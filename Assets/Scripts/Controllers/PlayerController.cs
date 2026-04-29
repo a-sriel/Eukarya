@@ -12,8 +12,8 @@ public class PlayerController : MonoBehaviour
     private float movementY;
 
     // Player's movement speed
-    public float speed = 0;
-    private float walkSpeed;
+    public float speed;
+    public float walkSpeed = 15;
     private float sprintSpeed = 0;
 
     // Stats for swimming scenes
@@ -28,10 +28,11 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         // Store inputted speed
-        walkSpeed = speed;
+        speed = walkSpeed;
         sprintSpeed = walkSpeed * 2.5f;
 
         floating = new Vector3(0.0f, floatForce, 0.0f);
+        rb.useGravity = true;
 
         animationController = gameObject.GetComponent<AnimationController>();
     }
@@ -84,21 +85,23 @@ public class PlayerController : MonoBehaviour
         if (stopMoving)
             speed = 0;
         else
-            speed = walkSpeed;
-
-        // Sprinting handling (Shift)
-        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
         {
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) ||
-                Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+            // Sprinting handling (Shift)
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
             {
-                speed = sprintSpeed;
+                if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) ||
+                    Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+                {
+                    print("SPRINTING");
+                    speed = sprintSpeed;
+                }
             }
-        }
 
-        if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
-        {
-            speed = walkSpeed;
+            // if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
+            else
+            {
+                speed = walkSpeed;
+            }
         }
 
         if (enableFloating)
