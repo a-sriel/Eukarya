@@ -8,6 +8,8 @@ TagManager:
   - Prey
   - PauseMenu
   - EvolutionManager
+  - SugarGlider
+  - Jerboa
   layers:
   - Default
   - TransparentFX

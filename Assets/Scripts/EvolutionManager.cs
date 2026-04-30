@@ -37,6 +37,16 @@ public class EvolutionManager : MonoBehaviour
         evolutionStage++;
     }
 
+    public void evolveToJerboa()
+    {
+        evolutionStage = 6;
+    }
+
+    public void evolveToSugarGlider()
+    {
+        evolutionStage = 7;
+    }
+
     public void switchScene()
     {
         switch (evolutionStage)

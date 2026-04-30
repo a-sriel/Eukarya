@@ -27,6 +27,12 @@ public class PlayerMechanics : MonoBehaviour
     bool attacking = false;
     bool freezeInPlace = false;
 
+    bool evolveToJerboa = false;
+    bool evolveToSugarGlider = false;
+
+    int jerboaProgress = 0;
+    int sugarGliderProgress = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -78,13 +84,18 @@ public class PlayerMechanics : MonoBehaviour
         }
 
         // Toggle evolution function
-        if (evolutionProgress == 5)
+        if (evolutionProgress == 5 && evolutionStage <= 5)
         {
             readyToEvolve = true;
 
             if(Input.GetKeyDown(KeyCode.E))
             {
-                evolutionManager.evolve();
+                if (evolveToJerboa)
+                    evolutionManager.evolveToJerboa();
+                else if (evolveToSugarGlider)
+                    evolutionManager.evolveToSugarGlider();
+                else
+                    evolutionManager.evolve();
             }
         }
 
@@ -140,6 +151,28 @@ public class PlayerMechanics : MonoBehaviour
     public bool isAttacking()
     {
         return attacking;
+    }
+
+    public void UpdateJerboaProgress(int progressAmount)
+    {
+        evolveToJerboa = true;
+        evolveToSugarGlider = false;
+
+        sugarGliderProgress = 0;
+        jerboaProgress += progressAmount;
+
+        evolutionProgress = jerboaProgress;
+    }
+
+    public void UpdateSugarGliderProgress(int progressAmount)
+    {
+        evolveToSugarGlider = true;
+        evolveToJerboa = false;
+
+        jerboaProgress = 0;
+        sugarGliderProgress += progressAmount;
+
+        evolutionProgress = sugarGliderProgress;
     }
 
     // End setters for player stats

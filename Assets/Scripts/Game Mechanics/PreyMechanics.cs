@@ -15,12 +15,15 @@ public class PreyMechanics : MonoBehaviour
     private PlayerMechanics playerMechanics;
 
     bool inRadius = false;
+    public string preyTag;
 
     // Start is called before the first frame update
     void Start()
     {
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null) player = playerObj;
+
+        preyTag = gameObject.tag;
     }
 
     // Detect if within player hitbox radius
@@ -57,7 +60,15 @@ public class PreyMechanics : MonoBehaviour
                 if (health <= 0)
                 {
                     // Give player 1 evolution point
-                    playerMechanics.UpdateEvolutionProgress(1);
+                    // Give special points for unique prey types
+                    // And also reset evo meter when a different type of prey
+                    // from the previous prey was consumed
+                    if (preyTag == "SugarGlider")
+                        playerMechanics.UpdateSugarGliderProgress(1);
+                    else if (preyTag == "Jerboa")
+                        playerMechanics.UpdateJerboaProgress(1);
+                    else
+                        playerMechanics.UpdateEvolutionProgress(1);
 
                     // Replenish player health
                     playerMechanics.UpdateHealth(-1 * restoreAmount);
