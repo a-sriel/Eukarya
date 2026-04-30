@@ -10,6 +10,8 @@ TagManager:
   - EvolutionManager
   - SugarGlider
   - Jerboa
+  - Aquatic
+  - Terrestrial
   layers:
   - Default
   - TransparentFX

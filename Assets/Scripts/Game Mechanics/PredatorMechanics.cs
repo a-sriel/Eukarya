@@ -19,11 +19,22 @@ public class PredatorMechanics : MonoBehaviour
     float cooldownPeriod = 3f;
     float attackCooldown = 0f;
 
+    private bool breachedSurface;
+    int lifeStage;
+
+    public string predatorTag;
+
     // Start is called before the first frame update
     void Start()
     {
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null) player = playerObj;
+
+        predatorTag = gameObject.tag;
+
+        playerMechanics = player.GetComponentInParent<PlayerMechanics>();
+        breachedSurface = playerMechanics.breachedSurface();
+        lifeStage = playerMechanics.GetLifeStage();
     }
 
 
@@ -61,7 +72,7 @@ public class PredatorMechanics : MonoBehaviour
 
         if (inRadius)
         {
-            playerMechanics = player.GetComponentInParent<PlayerMechanics>();
+            //playerMechanics = player.GetComponentInParent<PlayerMechanics>();
 
             // Attack player, then initiate cooldown timer
             if (attackCooldown <= 0)
@@ -81,7 +92,22 @@ public class PredatorMechanics : MonoBehaviour
                 // Update player's stats when enemy is defeated
                 if (health <= 0)
                 {
-                    playerMechanics.UpdateEvolutionProgress(1);
+                    // Check if in stage 4
+                    if (lifeStage == 4)
+                    {
+                        if (!playerMechanics.breachedSurface())
+                        {
+                            if (predatorTag == "Aquatic")
+                                playerMechanics.UpdateEvolutionProgress(1);
+                        }
+                        else
+                        {
+                            if (predatorTag == "Terrestrial")
+                                playerMechanics.UpdateEvolutionProgress(1);
+                        }
+                    }
+                    else
+                        playerMechanics.UpdateEvolutionProgress(1);
                 }
             }
         }

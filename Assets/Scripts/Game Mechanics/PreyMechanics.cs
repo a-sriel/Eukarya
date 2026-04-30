@@ -13,6 +13,8 @@ public class PreyMechanics : MonoBehaviour
     private GameObject player;
 
     private PlayerMechanics playerMechanics;
+    private bool breachedSurface;
+    int lifeStage;
 
     bool inRadius = false;
     public string preyTag;
@@ -24,6 +26,10 @@ public class PreyMechanics : MonoBehaviour
         if (playerObj != null) player = playerObj;
 
         preyTag = gameObject.tag;
+
+        playerMechanics = player.GetComponentInParent<PlayerMechanics>();
+        breachedSurface = playerMechanics.breachedSurface();
+        lifeStage = playerMechanics.GetLifeStage();
     }
 
     // Detect if within player hitbox radius
@@ -48,11 +54,10 @@ public class PreyMechanics : MonoBehaviour
     {
         if (inRadius)
         {
-            playerMechanics = player.GetComponentInParent<PlayerMechanics>();
+            //playerMechanics = player.GetComponentInParent<PlayerMechanics>();
             // Check if attack animation is playing
             if (playerMechanics.isAttacking())
             {
-                print("Attacking now");
                 // When player attacks prey, decrease its health
                 health -= damageAmount;
 
@@ -61,12 +66,31 @@ public class PreyMechanics : MonoBehaviour
                 {
                     // Give player 1 evolution point
                     // Give special points for unique prey types
-                    // And also reset evo meter when a different type of prey
-                    // from the previous prey was consumed
-                    if (preyTag == "SugarGlider")
-                        playerMechanics.UpdateSugarGliderProgress(1);
-                    else if (preyTag == "Jerboa")
-                        playerMechanics.UpdateJerboaProgress(1);
+
+                    if (lifeStage == 4)
+                    {
+                        if (!playerMechanics.breachedSurface())
+                        {
+                            if (preyTag == "Aquatic")
+                                playerMechanics.UpdateEvolutionProgress(1);
+                        }
+                        else
+                        {
+                            if (preyTag == "Terrestrial")
+                                playerMechanics.UpdateEvolutionProgress(1);
+                        }
+                    }
+                    // Reset evo meter when a different type of prey
+                    // from the previous prey was consumed (for stage 5)
+                    else if (lifeStage == 5)
+                    {
+                        if (preyTag == "SugarGlider")
+                            playerMechanics.UpdateSugarGliderProgress(1);
+                        else if (preyTag == "Jerboa")
+                            playerMechanics.UpdateJerboaProgress(1);
+                        else
+                            playerMechanics.UpdateEvolutionProgress(1);
+                    }
                     else
                         playerMechanics.UpdateEvolutionProgress(1);
 

@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 2539930834512878866}
   m_Layer: 0
   m_Name: HitBox
-  m_TagString: Prey
+  m_TagString: Terrestrial
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -305,3 +305,4 @@ MonoBehaviour:
   health: 20
   restoreAmount: 10
   damageAmount: 10
+  preyTag: 

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5663891692676337944}
   m_Layer: 0
   m_Name: HitBox
-  m_TagString: Predator
+  m_TagString: Terrestrial
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,6 +124,7 @@ MonoBehaviour:
   health: 20
   depleteAmount: 2
   damageAmount: 10
+  predatorTag: 
 --- !u!54 &5663891692676337944
 Rigidbody:
   m_ObjectHideFlags: 0

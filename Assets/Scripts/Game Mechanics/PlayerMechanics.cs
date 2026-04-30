@@ -33,6 +33,11 @@ public class PlayerMechanics : MonoBehaviour
     int jerboaProgress = 0;
     int sugarGliderProgress = 0;
 
+    bool tiktaalik = false;
+
+    bool aquaticPhase = false;
+    bool terrestrialPhase = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,12 +51,30 @@ public class PlayerMechanics : MonoBehaviour
         evolutionManager = evolutionManagerObject.GetComponent<EvolutionManager>();
 
         evolutionStage = evolutionManager.GetEvolutionStage();
-        
+
+        // Determine if in tiktaalik stage (this stage has 2 parts: terrestrial & aquatic
+        tiktaalik = (evolutionStage == 4);
+        if (tiktaalik)
+        {
+            aquaticPhase = true;
+        }
+        else terrestrialPhase = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (evolutionStage == 4)
+        {
+            if (terrestrialPhase)
+            {
+                //GameObject hitBox = gameObject.transform.GetChild(2).gameObject;
+                //hitBox.layer = LayerMask.NameToLayer("BreachedSurface");
+                gameObject.layer = LayerMask.NameToLayer("BreachedSurface");
+                foreach (Transform child in transform) child.gameObject.layer = LayerMask.NameToLayer("BreachedSurface");
+                print("BREACHED SURFACE");
+            }
+        }
         // Replenish stamina
         if (stamina < maxStamina)
         {
@@ -90,7 +113,17 @@ public class PlayerMechanics : MonoBehaviour
 
             if(Input.GetKeyDown(KeyCode.E))
             {
-                if (evolveToJerboa)
+                if (evolutionStage == 4 && aquaticPhase) // Only fully evolve upon terrestrial phase
+                {
+                    print("AQUATIC");
+                    // Reset evo progress
+                    aquaticPhase = false;
+                    terrestrialPhase = true;
+                    evolutionProgress = 0;
+
+                    // Enable land movement
+                }
+                else if (evolveToJerboa)
                     evolutionManager.evolveToJerboa();
                 else if (evolveToSugarGlider)
                     evolutionManager.evolveToSugarGlider();
@@ -173,6 +206,11 @@ public class PlayerMechanics : MonoBehaviour
         sugarGliderProgress += progressAmount;
 
         evolutionProgress = sugarGliderProgress;
+    }
+
+    public bool breachedSurface()
+    {
+        return terrestrialPhase;
     }
 
     // End setters for player stats
