@@ -16,7 +16,7 @@ public class StartMenuUIManager : MonoBehaviour
     // Public function to load a scene by name
     public void NextScene()
     {
-        SceneManager.LoadScene("Stage2");
+        SceneManager.LoadScene("Stage1");
     }
 
     // Start is called before the first frame update

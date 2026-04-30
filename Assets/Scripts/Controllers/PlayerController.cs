@@ -85,6 +85,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            print("CLICK");
+        }
         stopMoving = animationController.specialAnimationPlaying();
         stamina = playerMechanics.GetStamina();
 
