@@ -8,6 +8,8 @@ public class PlayerMechanics : MonoBehaviour
     public int stamina = 50;
     public int evolutionProgress = 0;
 
+    private int maxStamina;
+
     public bool readyToEvolve = false;
 
     private float cooldown = 0f;
@@ -19,6 +21,7 @@ public class PlayerMechanics : MonoBehaviour
     private GameObject evolutionManagerObject;
     private EvolutionManager evolutionManager;
     private AnimationController animationController;
+    private PlayerController playerController;
 
     bool dead = false;
     bool attacking = false;
@@ -27,7 +30,11 @@ public class PlayerMechanics : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        maxStamina = stamina;
+        print(maxStamina);
+
         animationController = gameObject.GetComponent<AnimationController>();
+        playerController = gameObject.GetComponent<PlayerController>();
 
         evolutionManagerObject = GameObject.FindWithTag("EvolutionManager");
         evolutionManager = evolutionManagerObject.GetComponent<EvolutionManager>();
@@ -39,6 +46,12 @@ public class PlayerMechanics : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Replenish stamina
+        if (stamina < maxStamina)
+        {
+            stamina++;
+        }
+
         attacking = animationController.isAttacking();
 
         // Each evolution progress point has a cooldown timer

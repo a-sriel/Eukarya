@@ -6,6 +6,9 @@ public class AnimationController : MonoBehaviour
 {
     private Animation anim;
     private Rigidbody rb;
+    private PlayerMechanics playerMechanics;
+
+    private int stamina;
 
     public float moveThreshold = 0.1f;
 
@@ -20,11 +23,15 @@ public class AnimationController : MonoBehaviour
     {
         anim = GetComponent<Animation>();
         rb = GetComponent<Rigidbody>();
+
+        playerMechanics = GetComponent<PlayerMechanics>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        stamina = playerMechanics.GetStamina();
+
         // Reset attack; only attack for one frame
         attacking = false;
 
@@ -50,14 +57,20 @@ public class AnimationController : MonoBehaviour
             }
         }
         
-
-        // Attack handling (LMB); only attack while attack animation is not already playing
-        // Prevents spamming attack and forces cooldown
-        if (Input.GetMouseButtonDown(0) && !anim.IsPlaying("attack"))
+        // Check if enough stamina to attack
+        if (stamina > 350)
         {
-            anim.Play("attack");
-            attacking = true;
+            // Attack handling (LMB); only attack while attack animation is not already playing
+            // Prevents spamming attack and forces cooldown
+            if (Input.GetMouseButtonDown(0) && !anim.IsPlaying("attack"))
+            {
+                anim.Play("attack");
+                attacking = true;
+
+                playerMechanics.UpdateStamina(350);
+            }
         }
+
     }
 
     public bool isAttacking()

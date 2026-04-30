@@ -8447,7 +8447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
-  stamina: 50
+  stamina: 1000
   evolutionProgress: 0
   readyToEvolve: 0
   evolutionStage: 1

@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     private AnimationController animationController;
+    private PlayerMechanics playerMechanics;
 
     private Rigidbody rb;
     private float movementX;
@@ -20,7 +21,10 @@ public class PlayerController : MonoBehaviour
     private Vector3 floating;
     public float floatForce = 2.0f;
 
+    private int stamina;
+
     bool stopMoving = false;
+    bool isSprinting = false;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +39,7 @@ public class PlayerController : MonoBehaviour
         rb.useGravity = true;
 
         animationController = gameObject.GetComponent<AnimationController>();
+        playerMechanics = gameObject.GetComponent<PlayerMechanics>();
     }
 
     // Called when move input detected
@@ -81,6 +86,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         stopMoving = animationController.specialAnimationPlaying();
+        stamina = playerMechanics.GetStamina();
 
         if (stopMoving)
             speed = 0;
@@ -89,17 +95,24 @@ public class PlayerController : MonoBehaviour
             // Sprinting handling (Shift)
             if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
             {
-                if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) ||
-                    Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+                if (stamina > 50)
                 {
-                    print("SPRINTING");
-                    speed = sprintSpeed;
+                    if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) ||
+                        Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+                    {
+                        isSprinting = true;
+                        speed = sprintSpeed;
+
+                        playerMechanics.UpdateStamina(3);
+                    }
                 }
+
             }
 
             // if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
             else
             {
+                isSprinting = false;
                 speed = walkSpeed;
             }
         }
@@ -124,7 +137,6 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-
     }
 
     public void enableSwimming(bool flag)
