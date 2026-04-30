@@ -2341,8 +2341,8 @@ MonoBehaviour:
   preyPrefab: {fileID: 4242463742301572766, guid: 2ce15e89a72ea5b48b1ae32f99d901ff, type: 3}
   predatorCount: 4
   preyCount: 12
-  spawnAreaSize: {x: 500, y: 500}
-  ySpawnLevel: 2.5
+  spawnAreaSize: {x: 700, y: 700}
+  ySpawnLevel: 15
 --- !u!4 &629243405
 Transform:
   m_ObjectHideFlags: 0
@@ -2352,7 +2352,7 @@ Transform:
   m_GameObject: {fileID: 629243403}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 278, y: 15, z: 258}
+  m_LocalPosition: {x: 483, y: 15, z: 559}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
