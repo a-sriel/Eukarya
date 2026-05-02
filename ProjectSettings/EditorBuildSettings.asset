@@ -29,6 +29,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Stage6_Fly.unity
     guid: fd8d9a7d3691858488f5c52d6a5a6146
+  - enabled: 1
+    path: Assets/Scenes/WinScreen.unity
+    guid: cda5bab1de3d42042a0ab2eb3447ae1d
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: de045e4c83e08254a9646d17e457a440, type: 2}
   m_UseUCBPForAssetBundles: 0

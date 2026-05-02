@@ -23,8 +23,15 @@ public class PlayerController : MonoBehaviour
 
     private int stamina;
 
+    public bool canSprint = true;
+    public bool canJump = false;
+
     bool stopMoving = false;
     bool isSprinting = false;
+    bool isJumping = false;
+    bool isGrounded = true;
+
+    int jumpCooldown = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -85,10 +92,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            print("CLICK");
-        }
         stopMoving = animationController.specialAnimationPlaying();
         stamina = playerMechanics.GetStamina();
 
@@ -97,7 +100,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             // Sprinting handling (Shift)
-            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+            if ( (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) && canSprint)
             {
                 if (stamina > 50)
                 {
@@ -141,9 +144,47 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+
+        if (canJump)
+        {
+            // Jump
+            if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+            {
+                isJumping = true;
+                rb.AddForce(Physics.gravity, ForceMode.Acceleration);
+                rb.AddForce(floating * 60f, ForceMode.Impulse);
+                
+            }
+
+            if (Input.GetKeyUp(KeyCode.Space) && !isGrounded)
+            {
+                isJumping = false;
+                rb.AddForce(Physics.gravity, ForceMode.Acceleration);
+                rb.AddForce(floating * -60f, ForceMode.Impulse);
+            }
+        }
     }
 
-    public void enableSwimming(bool flag)
+    public void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = false;
+
+        }
+    }
+
+
+
+        public void enableSwimming(bool flag)
     {
         enableFloating = flag;
     }

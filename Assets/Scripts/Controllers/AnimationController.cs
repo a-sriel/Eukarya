@@ -56,6 +56,21 @@ public class AnimationController : MonoBehaviour
                     anim["walk"].speed = 0f;
             }
         }
+
+        print(playerMechanics.GetLifeStage());
+        if (playerMechanics.GetLifeStage() == 7)
+        {
+            print("Sugar");
+            if (Input.GetKey(KeyCode.Space))
+            {
+                anim.Play("fly");
+            }
+
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                anim.Stop();
+            }
+        }
         
         // Check if enough stamina to attack
         if (stamina > 350)

@@ -12,6 +12,7 @@ TagManager:
   - Jerboa
   - Aquatic
   - Terrestrial
+  - Ground
   layers:
   - Default
   - TransparentFX

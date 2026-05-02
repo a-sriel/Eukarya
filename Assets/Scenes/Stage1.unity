@@ -1340,7 +1340,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cf8a2422452d93c44944ed7c837904d6, type: 2}
+  - {fileID: 2100000, guid: b770f898462a0674ab570e9543415ed0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1379,7 +1379,7 @@ Transform:
   m_GameObject: {fileID: 634414514}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -34, y: 0, z: 4.7}
   m_LocalScale: {x: 374.05, y: 1, z: 401.55243}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4703,12 +4703,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5cb58124e9cbc4faae16fff6ac86da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  predatorPrefab: {fileID: 8222622289603225412, guid: 35b1cd2d7d9fe2648b605ebcf5694ee0, type: 3}
-  preyPrefab: {fileID: 4242463742301572766, guid: 2ce15e89a72ea5b48b1ae32f99d901ff, type: 3}
-  predatorCount: 2
+  predatorPrefab: {fileID: 4242463742301572766, guid: c60a1e01073fe87439cb068b81be792f, type: 3}
+  preyPrefab: {fileID: 4242463742301572766, guid: c60a1e01073fe87439cb068b81be792f, type: 3}
+  predatorCount: 0
   preyCount: 6
   spawnAreaSize: {x: 200, y: 200}
-  ySpawnLevel: 14
+  ySpawnLevel: 3
 --- !u!4 &1801199017
 Transform:
   m_ObjectHideFlags: 0
@@ -4718,7 +4718,7 @@ Transform:
   m_GameObject: {fileID: 1801199015}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 15, z: 0}
+  m_LocalPosition: {x: -37.9, y: 3, z: -15.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4923,6 +4923,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 150
   floatForce: 2
+  canSprint: 0
   rotationSpeed: 10
   facingOffset: 180
   enableRotation: 1

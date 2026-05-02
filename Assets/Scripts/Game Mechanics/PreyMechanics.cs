@@ -38,6 +38,7 @@ public class PreyMechanics : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             inRadius = true;
+            print("PLAYER");
         }
     }
 

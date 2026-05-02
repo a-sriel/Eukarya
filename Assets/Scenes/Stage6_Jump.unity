@@ -841,7 +841,7 @@ GameObject:
   - component: {fileID: 227062588}
   m_Layer: 0
   m_Name: Soil
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1626,6 +1626,56 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5138664683100466147, guid: 1601663a5bb3f0a46a9d7408aee5c293, type: 3}
   m_PrefabInstance: {fileID: 388168372}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &406863350
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 406863352}
+  - component: {fileID: 406863351}
+  m_Layer: 0
+  m_Name: Spawner (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &406863351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406863350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a5cb58124e9cbc4faae16fff6ac86da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  predatorPrefab: {fileID: 4242463742301572766, guid: 6990a2c2a658a594399f55bf0179bb5e, type: 3}
+  preyPrefab: {fileID: 4242463742301572766, guid: 6990a2c2a658a594399f55bf0179bb5e, type: 3}
+  predatorCount: 0
+  preyCount: 8
+  spawnAreaSize: {x: 700, y: 500}
+  ySpawnLevel: 25
+--- !u!4 &406863352
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406863350}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 512, y: 74.2, z: 597}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &430747232
 GameObject:
   m_ObjectHideFlags: 0
@@ -2296,12 +2346,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5cb58124e9cbc4faae16fff6ac86da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  predatorPrefab: {fileID: 8222622289603225412, guid: 35b1cd2d7d9fe2648b605ebcf5694ee0, type: 3}
-  preyPrefab: {fileID: 4242463742301572766, guid: 2ce15e89a72ea5b48b1ae32f99d901ff, type: 3}
+  predatorPrefab: {fileID: 8222622289603225412, guid: 77a372882fa9a6645948c9d2d8921708, type: 3}
+  preyPrefab: {fileID: 8222622289603225412, guid: 8da79dbda7d1dbb4c8829753e7034998, type: 3}
   predatorCount: 4
   preyCount: 12
-  spawnAreaSize: {x: 500, y: 500}
-  ySpawnLevel: 2.5
+  spawnAreaSize: {x: 700, y: 500}
+  ySpawnLevel: 3
 --- !u!4 &629243405
 Transform:
   m_ObjectHideFlags: 0
@@ -2311,7 +2361,7 @@ Transform:
   m_GameObject: {fileID: 629243403}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 278, y: 15, z: 258}
+  m_LocalPosition: {x: 512, y: 15, z: 597}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4738,7 +4788,7 @@ GameObject:
   - component: {fileID: 1265775415}
   m_Layer: 0
   m_Name: Mountains
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -6724,7 +6774,7 @@ GameObject:
   - component: {fileID: 1680040061}
   m_Layer: 3
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -8183,6 +8233,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8884520622941979238}
   - component: {fileID: 6342563020106315277}
+  - component: {fileID: 8884520622941979239}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -8821,6 +8872,7 @@ GameObject:
   - component: {fileID: 7865075190690418512}
   - component: {fileID: 7106521524788514862}
   - component: {fileID: 3732829575466016388}
+  - component: {fileID: 7865075190690418513}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -8932,9 +8984,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3788984574976539225}
   serializedVersion: 4
-  m_Mass: 0.3
-  m_Drag: 5
-  m_AngularDrag: 10
+  m_Mass: 2
+  m_Drag: 2
+  m_AngularDrag: 4
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -9040,7 +9092,7 @@ Transform:
   m_GameObject: {fileID: 3788984574976539225}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 381, y: 5.86, z: 473.8}
+  m_LocalPosition: {x: 381, y: 5.84, z: 473.8}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9239,6 +9291,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 150
   floatForce: 2
+  canSprint: 1
+  canJump: 1
   rotationSpeed: 10
   facingOffset: 180
   enableRotation: 1
@@ -9406,6 +9460,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+--- !u!65 &7865075190690418513
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3788984574976539225}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: -4, z: 0}
 --- !u!1 &7875291666406975805
 GameObject:
   m_ObjectHideFlags: 0
@@ -9725,6 +9800,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4852174011255603421}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!65 &8884520622941979239
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16011913104239315}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.03, y: 0.06, z: 0.03}
+  m_Center: {x: 0, y: -0.05, z: -0.03}
 --- !u!4 &8910124876129431747
 Transform:
   m_ObjectHideFlags: 0
@@ -9749,6 +9845,7 @@ SceneRoots:
   - {fileID: 1110978231}
   - {fileID: 617611564}
   - {fileID: 629243405}
+  - {fileID: 406863352}
   - {fileID: 1861270952}
   - {fileID: 1241474627}
   - {fileID: 1643813177}

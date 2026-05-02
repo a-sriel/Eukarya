@@ -47,6 +47,11 @@ public class EvolutionManager : MonoBehaviour
         evolutionStage = 7;
     }
 
+    public void winGame()
+    {
+        evolutionStage = 8;
+    }
+
     public void switchScene()
     {
         switch (evolutionStage)
@@ -74,6 +79,9 @@ public class EvolutionManager : MonoBehaviour
                 break;
             case 7:
                 SceneManager.LoadScene("Stage6_Fly");
+                break;
+            case 8:
+                SceneManager.LoadScene("WinScreen");
                 break;
         }
     }

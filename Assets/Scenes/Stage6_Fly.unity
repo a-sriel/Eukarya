@@ -2383,7 +2383,7 @@ MonoBehaviour:
   player: {fileID: 2584612732196867080}
   distance: 25
   mouseSensitivity: 3
-  pitchMin: -20
+  pitchMin: 0
   pitchMax: 60
 --- !u!1 &586149610
 GameObject:
@@ -2633,12 +2633,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5cb58124e9cbc4faae16fff6ac86da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  predatorPrefab: {fileID: 8222622289603225412, guid: 35b1cd2d7d9fe2648b605ebcf5694ee0, type: 3}
-  preyPrefab: {fileID: 4242463742301572766, guid: 2ce15e89a72ea5b48b1ae32f99d901ff, type: 3}
+  predatorPrefab: {fileID: 8222622289603225412, guid: 77a372882fa9a6645948c9d2d8921708, type: 3}
+  preyPrefab: {fileID: 8222622289603225412, guid: 8da79dbda7d1dbb4c8829753e7034998, type: 3}
   predatorCount: 4
   preyCount: 12
-  spawnAreaSize: {x: 500, y: 500}
-  ySpawnLevel: 2.5
+  spawnAreaSize: {x: 700, y: 700}
+  ySpawnLevel: 3
 --- !u!4 &629243405
 Transform:
   m_ObjectHideFlags: 0
@@ -2648,7 +2648,7 @@ Transform:
   m_GameObject: {fileID: 629243403}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 278, y: 15, z: 258}
+  m_LocalPosition: {x: 488, y: 15, z: 628.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5089,6 +5089,56 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5138664683100466147, guid: 1601663a5bb3f0a46a9d7408aee5c293, type: 3}
   m_PrefabInstance: {fileID: 1074281768}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1080503954
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1080503956}
+  - component: {fileID: 1080503955}
+  m_Layer: 0
+  m_Name: Spawner (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1080503955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080503954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a5cb58124e9cbc4faae16fff6ac86da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  predatorPrefab: {fileID: 4242463742301572766, guid: 6990a2c2a658a594399f55bf0179bb5e, type: 3}
+  preyPrefab: {fileID: 4242463742301572766, guid: 6990a2c2a658a594399f55bf0179bb5e, type: 3}
+  predatorCount: 0
+  preyCount: 6
+  spawnAreaSize: {x: 700, y: 700}
+  ySpawnLevel: 60
+--- !u!4 &1080503956
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080503954}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 488, y: 15, z: 628.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1096848225
 GameObject:
   m_ObjectHideFlags: 0
@@ -8987,6 +9037,56 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2683230082378939093, guid: 0460b07f32ca99547854f9271df0288d, type: 3}
   m_PrefabInstance: {fileID: 1769194044}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1776671676
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1776671678}
+  - component: {fileID: 1776671677}
+  m_Layer: 0
+  m_Name: Spawner (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1776671677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776671676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a5cb58124e9cbc4faae16fff6ac86da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  predatorPrefab: {fileID: 4242463742301572766, guid: 6990a2c2a658a594399f55bf0179bb5e, type: 3}
+  preyPrefab: {fileID: 4242463742301572766, guid: 6990a2c2a658a594399f55bf0179bb5e, type: 3}
+  predatorCount: 0
+  preyCount: 12
+  spawnAreaSize: {x: 700, y: 700}
+  ySpawnLevel: 160
+--- !u!4 &1776671678
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776671676}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 488, y: 15, z: 628.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1780890007
 GameObject:
   m_ObjectHideFlags: 0
@@ -11028,6 +11128,7 @@ Animation:
   - {fileID: 7400000, guid: 327b8daee0d141443ae746cbc9705ba5, type: 2}
   - {fileID: 7400000, guid: 9166d8a9f1705714d878868482626ffb, type: 2}
   - {fileID: 7400000, guid: f2b32b6bffa53c44b9633841550e18be, type: 2}
+  - {fileID: 7400000, guid: 443ac103bf6515e4694d13295f1360da, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
@@ -11480,10 +11581,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 150
   floatForce: 2
+  canSprint: 1
+  canJump: 0
   rotationSpeed: 10
   facingOffset: 180
   enableRotation: 1
-  enableFloating: 0
+  enableFloating: 1
 --- !u!64 &5714506648066048092
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12137,6 +12240,8 @@ SceneRoots:
   - {fileID: 1110978231}
   - {fileID: 617611564}
   - {fileID: 629243405}
+  - {fileID: 1080503956}
+  - {fileID: 1776671678}
   - {fileID: 1861270952}
   - {fileID: 1241474627}
   - {fileID: 1643813177}

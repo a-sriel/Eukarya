@@ -132,6 +132,16 @@ public class PlayerMechanics : MonoBehaviour
             }
         }
 
+        if (evolutionProgress == 5 && evolutionStage > 5)
+        {
+            readyToEvolve = true;
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                evolutionManager.winGame();
+            }
+        }
+
         if (health <= 0)
         {
             dead = true;
