@@ -13,10 +13,26 @@ public class StartMenuUIManager : MonoBehaviour
 
     public int evolutionStage;
 
-    // Public function to load a scene by name
-    public void NextScene()
+    public OptionsManager optionsManager;
+
+    public void OpenOptions()
+    {
+        optionsManager.Open();
+    }
+
+    public void StartGame()
     {
         SceneManager.LoadScene("Stage1");
+    }
+
+    public void OpenLevelSelect()
+    {
+        SceneManager.LoadScene("LevelSelect");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
     // Start is called before the first frame update
