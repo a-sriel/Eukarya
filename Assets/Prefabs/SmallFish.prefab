@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 8875644467873649324}
   - component: {fileID: 4083804465549222242}
   - component: {fileID: 8948486086954628754}
-  - component: {fileID: 50144813597401886}
-  m_Layer: 0
+  - component: {fileID: 54115260590047412}
+  m_Layer: 9
   m_Name: SmallFish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ MonoBehaviour:
   restoreAmount: 10
   damageAmount: 10
   preyTag: 
---- !u!114 &50144813597401886
+--- !u!114 &54115260590047412
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -164,14 +164,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 4242463742301572766}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfeb8ff23ba636344890130cfd57e3cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 7069de2440139e34ea077bad22834b74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fleeSpeed: 12
+  useRotation: 1
+  orientationAxis: 0
+  rotationSpeed: 10
+  drag: 3
+  fleeSpeed: 35
   detectionDistance: 30
-  wanderSpeed: 4
-  wanderRadius: 40
-  wanderWaitTime: 2.5
+  fleeDirectionVariance: 0.8
+  enableBursts: 1
+  burstMultiplier: 1.5
+  burstDuration: 0.3
+  burstCooldown: 1.5
+  wanderSpeed: 20
+  wanderRadius: 150
+  wanderWaitTime: 4
 --- !u!1 &6519125618197278628
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,7 +195,7 @@ GameObject:
   - component: {fileID: 6358251490468194908}
   - component: {fileID: 2025286505141026454}
   - component: {fileID: 2539930834512878866}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HitBox
   m_TagString: Aquatic
   m_Icon: {fileID: 0}
@@ -337,7 +346,7 @@ GameObject:
   - component: {fileID: 5742995895926797676}
   - component: {fileID: 7513302961176662029}
   - component: {fileID: 5032698166299352406}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Fish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -352,13 +361,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7371823094531886378}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.36, y: 0, z: 0}
+  m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1.0000011, z: 1.0000011}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 124642767743794467}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 90, z: 0}
 --- !u!33 &4812926419073713978
 MeshFilter:
   m_ObjectHideFlags: 0

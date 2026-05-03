@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8032820383574823963}
   - component: {fileID: 8875644467873649324}
   - component: {fileID: 4083804465549222242}
-  - component: {fileID: 7964516279090940703}
+  - component: {fileID: 2320744495708018091}
   m_Layer: 0
   m_Name: PreyJelly
   m_TagString: Untagged
@@ -93,7 +93,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7964516279090940703
+--- !u!114 &2320744495708018091
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,11 +102,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 4242463742301572766}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfeb8ff23ba636344890130cfd57e3cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 7069de2440139e34ea077bad22834b74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fleeSpeed: 12
+  useRotation: 0
+  orientationAxis: 0
+  rotationSpeed: 4
+  fleeSpeed: 20
   detectionDistance: 30
+  fleeDirectionVariance: 0.75
+  enableBursts: 1
+  burstMultiplier: 3
+  burstDuration: 1
+  burstCooldown: 3
   wanderSpeed: 4
   wanderRadius: 40
   wanderWaitTime: 2.5
