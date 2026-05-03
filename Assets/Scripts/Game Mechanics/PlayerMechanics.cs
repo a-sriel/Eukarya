@@ -48,6 +48,11 @@ public class PlayerMechanics : MonoBehaviour
         playerController = gameObject.GetComponent<PlayerController>();
 
         evolutionManagerObject = GameObject.FindWithTag("EvolutionManager");
+        if (evolutionManagerObject == null)
+        {
+            Debug.LogError("EvolutionManager not found! Make sure it has the 'EvolutionManager' tag.");
+            return;
+        }
         evolutionManager = evolutionManagerObject.GetComponent<EvolutionManager>();
 
         evolutionStage = evolutionManager.GetEvolutionStage();
