@@ -16,7 +16,8 @@ public class StartMenuUIManager : MonoBehaviour
     // Public function to load a scene by name
     public void NextScene()
     {
-        SceneManager.LoadScene("Stage1");
+        // SceneManager.LoadScene("Stage1");
+        evolutionManager.evolve();
     }
 
     // Start is called before the first frame update
