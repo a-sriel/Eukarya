@@ -5,6 +5,7 @@ using TMPro;
 public class OptionsManager : MonoBehaviour
 {
     public GameObject optionsPanel;
+    public GameObject dimOverlay;
 
     public Slider musicSlider;
     public Slider sfxSlider;
@@ -32,6 +33,7 @@ public class OptionsManager : MonoBehaviour
     {
         pendingMusic = musicSlider.value;
         pendingSFX = sfxSlider.value;
+        if (dimOverlay != null) dimOverlay.SetActive(true);
         optionsPanel.SetActive(true);
     }
 
@@ -41,6 +43,7 @@ public class OptionsManager : MonoBehaviour
         PlayerPrefs.SetFloat("SFXVolume", sfxSlider.value);
         PlayerPrefs.Save();
         ApplyVolumes(musicSlider.value, sfxSlider.value);
+        if (dimOverlay != null) dimOverlay.SetActive(false);
         optionsPanel.SetActive(false);
     }
 
@@ -49,6 +52,7 @@ public class OptionsManager : MonoBehaviour
         musicSlider.value = pendingMusic;
         sfxSlider.value = pendingSFX;
         UpdateLabels();
+        if (dimOverlay != null) dimOverlay.SetActive(false);
         optionsPanel.SetActive(false);
     }
 

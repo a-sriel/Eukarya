@@ -9,6 +9,7 @@ using TMPro;
 public class PauseMenuUIManager : MonoBehaviour
 {
     public GameObject pauseMenu;
+    public GameObject dimOverlay;
     public OptionsManager optionsManager;
     private bool paused = false;
     private float timePaused;
@@ -19,6 +20,7 @@ public class PauseMenuUIManager : MonoBehaviour
         paused = !paused;
         timePaused = paused ? 0f : 1f;
         pauseMenu.SetActive(paused);
+        if (dimOverlay != null) dimOverlay.SetActive(paused);
         Time.timeScale = timePaused;
 
         // Lock/unlock cursor with pause state
@@ -49,6 +51,7 @@ public class PauseMenuUIManager : MonoBehaviour
         timePaused = paused ? 0f : 1f;
         Time.timeScale = timePaused;
         pauseMenu.SetActive(false);
+        if (dimOverlay != null) dimOverlay.SetActive(false);
     }
 
     // Update is called once per frame
