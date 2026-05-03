@@ -1439,9 +1439,7 @@ Transform:
   m_LocalPosition: {x: -83, y: -186, z: 532.9901}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2010340528}
-  - {fileID: 1080854145}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &364257742
@@ -4592,10 +4590,7 @@ Transform:
   m_LocalPosition: {x: -259, y: 259.6184, z: 527.8668}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 234395880}
-  - {fileID: 1712479089}
-  - {fileID: 1694543804}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1001 &1074281768
@@ -4722,7 +4717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathScreen: {fileID: 1118096319}
-  player: {fileID: 919132147827238138}
+  player: {fileID: 4741772747633961413}
 --- !u!114 &1079135706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4759,7 +4754,7 @@ MonoBehaviour:
   evo3: {fileID: 1637597665}
   evo4: {fileID: 1865390202}
   evo5: {fileID: 1142564347}
-  player: {fileID: 919132147827238138}
+  player: {fileID: 4741772747633961413}
   emptyEvo: {fileID: 21300000, guid: 5e3b6ec7b680da946a8f5ff081e9fe56, type: 3}
   fullEvo: {fileID: 570476907, guid: 08edd89651707334aaee78bd767804b0, type: 3}
   lifeStageText: {fileID: 1698409093}
@@ -10994,7 +10989,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 1096848227}
   - {fileID: 583026374}
-  - {fileID: 6398295724870753668}
   - {fileID: 1079135711}
   - {fileID: 1110978231}
   - {fileID: 617611564}
@@ -11012,6 +11006,6 @@ SceneRoots:
   - {fileID: 1264297261}
   - {fileID: 598068140}
   - {fileID: 360247520}
-  - {fileID: 1841033746}
   - {fileID: 1060312373}
   - {fileID: 1839853130}
+  - {fileID: 8024630026895445692}

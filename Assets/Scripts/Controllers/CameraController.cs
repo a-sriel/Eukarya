@@ -25,6 +25,8 @@ public class CameraController : MonoBehaviour
     // Called once per frame, after all Update functions finished
     void LateUpdate()
     {
+        if (Time.timeScale == 0f) return;
+
         // Accumulate mouse input into orbit angles
         yaw += Input.GetAxis("Mouse X") * mouseSensitivity;
         pitch -= Input.GetAxis("Mouse Y") * mouseSensitivity;
