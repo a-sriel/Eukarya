@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7967320678508232788}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: BIKTarget.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4197542761978936531}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: BIKTarget.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7022661566709371224}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: FFoot.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1135639361384531028}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Tail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 1720791068925307499}
   - component: {fileID: 1167646979165524109}
   - component: {fileID: 2636767751086243527}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Tiktaalik
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -319,7 +319,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8433134869918293595}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -359,7 +359,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3383897584259655046}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: FFoot.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -391,7 +391,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 856376267604604449}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: BIKPole.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -423,7 +423,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8646389128131825159}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: BFoot.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -454,7 +454,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7206469882823806108}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: BArm.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -487,7 +487,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3916058275961361779}
   - component: {fileID: 2934421621394999614}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -540,7 +540,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1781170975850682227}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: BFoot.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -572,7 +572,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8566985520709222544}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: FIKPole.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -603,7 +603,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3527096163822276305}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: FFoot.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -635,7 +635,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6523598659570060116}
   - component: {fileID: 3950205232834285015}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Tiktaalik
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -743,7 +743,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3142429519685123944}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Head_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -774,7 +774,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1194431258675317287}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: FFoot.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -808,7 +808,7 @@ GameObject:
   - component: {fileID: 3947790506353340950}
   - component: {fileID: 3140355457767138434}
   - component: {fileID: 8388647157811655612}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: HitBox
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -909,7 +909,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8070931830370908182}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Spine2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -941,7 +941,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5440724277833839241}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Spine3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -975,7 +975,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 355715531061850807}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: FIKTarget.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1006,7 +1006,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2855226953529580847}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: FArm.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1038,7 +1038,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7754418417125390042}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: BIKTarget.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1070,7 +1070,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7523290717572511350}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: BIKPole.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1101,7 +1101,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 118381082544751431}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: FIKPole.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1133,7 +1133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9025500255463114224}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: BArm.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1165,7 +1165,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2845149040628547336}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: BIKPole.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1197,7 +1197,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2327875931301233386}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Tail_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1228,7 +1228,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 764527321032793664}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: BIKPole.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1259,7 +1259,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7387433342820413067}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: FIKPole.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1291,7 +1291,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3107377068739838057}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: BFoot.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1323,7 +1323,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2942827231608270305}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: FIKPole.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1354,7 +1354,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7287771524255970687}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: FIKTarget.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1385,7 +1385,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 720966482756024975}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: FIKTarget.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1417,7 +1417,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6979656678155893007}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: FIKTarget.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1449,7 +1449,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2558810192147122551}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1481,7 +1481,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 321562342826987405}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: BFoot.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1512,7 +1512,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4027751089462950344}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Spine1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1547,7 +1547,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 817026279594747787}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: FArm.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1579,7 +1579,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 47745944991209934}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: BIKTarget.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1610,7 +1610,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3137659307167993651}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
