@@ -12,8 +12,23 @@ public class MusicManager : MonoBehaviour
     [Range(0f, 1f)] public float underwaterVolume = 1f;
     [Range(0f, 1f)] public float forestVolume = 1f;
 
+    private float masterVolume = 1f;
     private AudioSource audioSource;
     private string currentTrack = "";
+
+    public void SetMasterVolume(float v)
+    {
+        masterVolume = Mathf.Clamp01(v);
+        audioSource.volume = GetTrackBaseVolume() * masterVolume;
+    }
+
+    float GetTrackBaseVolume()
+    {
+        if (currentTrack == "cell") return cellVolume;
+        if (currentTrack == "underwater") return underwaterVolume;
+        if (currentTrack == "forest") return forestVolume;
+        return 1f;
+    }
 
     void Awake()
     {
@@ -42,7 +57,7 @@ public class MusicManager : MonoBehaviour
         if (clip != null)
         {
             audioSource.clip = clip;
-            audioSource.volume = volume;
+            audioSource.volume = volume * masterVolume;
             audioSource.Play();
         }
     }

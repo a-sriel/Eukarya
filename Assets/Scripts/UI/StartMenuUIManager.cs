@@ -36,7 +36,7 @@ public class StartMenuUIManager : MonoBehaviour
 
     public void StartGame()
     {
-        // SceneManager.LoadScene("Stage1");
+        evolutionManager.evolutionStage = 0;
         evolutionManager.evolve();
     }
 

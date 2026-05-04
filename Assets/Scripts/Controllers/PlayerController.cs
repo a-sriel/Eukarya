@@ -153,7 +153,9 @@ public class PlayerController : MonoBehaviour
                 isJumping = true;
                 rb.AddForce(Physics.gravity, ForceMode.Acceleration);
                 rb.AddForce(floating * 60f, ForceMode.Impulse);
-                
+
+                if (SFXManager.Instance != null)
+                    SFXManager.Instance.PlayJerboaJump();
             }
 
             if (Input.GetKeyUp(KeyCode.Space) && !isGrounded)

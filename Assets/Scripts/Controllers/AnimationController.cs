@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class AnimationController : MonoBehaviour
 {
@@ -30,6 +31,8 @@ public class AnimationController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Time.timeScale == 0f) return;
+
         stamina = playerMechanics.GetStamina();
 
         // Reset attack; only attack for one frame
@@ -61,6 +64,11 @@ public class AnimationController : MonoBehaviour
         if (playerMechanics.GetLifeStage() == 7)
         {
             print("Sugar");
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (SFXManager.Instance != null)
+                    SFXManager.Instance.PlaySugarGliderFlap();
+            }
             if (Input.GetKey(KeyCode.Space))
             {
                 anim.Play("fly");
@@ -77,12 +85,15 @@ public class AnimationController : MonoBehaviour
         {
             // Attack handling (LMB); only attack while attack animation is not already playing
             // Prevents spamming attack and forces cooldown
-            if (Input.GetMouseButtonDown(0) && !anim.IsPlaying("attack"))
+            if (Input.GetMouseButtonDown(0) && !anim.IsPlaying("attack") && !EventSystem.current.IsPointerOverGameObject())
             {
                 anim.Play("attack");
                 attacking = true;
 
                 playerMechanics.UpdateStamina(350);
+
+                if (SFXManager.Instance != null)
+                    SFXManager.Instance.PlayAttack();
             }
         }
 

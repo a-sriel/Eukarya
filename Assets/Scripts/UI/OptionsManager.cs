@@ -74,7 +74,9 @@ public class OptionsManager : MonoBehaviour
 
     void ApplyVolumes(float music, float sfx)
     {
-        AudioListener.volume = music / 100f;
-        // SFX mixer hookup goes here once you set up an AudioMixer
+        if (MusicManager.Instance != null)
+            MusicManager.Instance.SetMasterVolume(music / 100f);
+        if (SFXManager.Instance != null)
+            SFXManager.Instance.optionsMultiplier = sfx / 100f;
     }
 }

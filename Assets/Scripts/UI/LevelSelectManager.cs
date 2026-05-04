@@ -36,7 +36,27 @@ public class LevelSelectManager : MonoBehaviour
 
     public void LoadStage(string sceneName)
     {
+        if (EvolutionManager.Instance != null)
+        {
+            int stage = SceneNameToStage(sceneName);
+            EvolutionManager.Instance.SetStageDirect(stage);
+        }
         SceneManager.LoadScene(sceneName);
+    }
+
+    int SceneNameToStage(string sceneName)
+    {
+        switch (sceneName)
+        {
+            case "Stage1": return 1;
+            case "Stage2": return 2;
+            case "Stage3": return 3;
+            case "Stage4": return 4;
+            case "Stage5": return 5;
+            case "Stage6_Jump": return 6;
+            case "Stage6_Fly": return 7;
+            default: return 0;
+        }
     }
 
     public void GoBack()
