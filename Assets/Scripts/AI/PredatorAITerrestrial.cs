@@ -39,6 +39,8 @@ public class PredatorAITerrestrial : MonoBehaviour
             Debug.DrawLine(transform.position, agent.destination, Color.green);
         }
 
+        agent.updateRotation = false;
+
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
         if (distanceToPlayer <= detectionDistance)
@@ -48,6 +50,20 @@ public class PredatorAITerrestrial : MonoBehaviour
         else
         {
             WanderAround();
+        }
+
+        RotateTowardsVelocity();
+    }
+
+    void RotateTowardsVelocity()
+    {
+        // Only rotate if the agent is actually moving
+        if (agent.velocity.sqrMagnitude > 0.1f)
+        {
+            // Calculate the direction the agent is moving
+            Quaternion lookRotation = Quaternion.LookRotation(-agent.velocity.normalized);
+
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 10f);
         }
     }
 

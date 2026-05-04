@@ -406,9 +406,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cbee080e20e55948a410720a0753bc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fleeSpeed: 30
-  detectionDistance: 40
-  wanderSpeed: 20
+  fleeSpeed: 15
+  detectionDistance: 30
+  wanderSpeed: 8
   wanderRadius: 60
   wanderWaitTime: 7
   rotationSpeed: 10

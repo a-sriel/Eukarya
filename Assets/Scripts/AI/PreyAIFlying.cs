@@ -84,7 +84,7 @@ public class PreyAIFlying : MonoBehaviour
     {
         if (direction == Vector3.zero) return;
 
-        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        Quaternion targetRotation = Quaternion.LookRotation(-direction);
         Quaternion smoothRotation = Quaternion.Slerp(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
 
         rb.MoveRotation(smoothRotation);
