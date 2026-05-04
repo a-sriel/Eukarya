@@ -10,8 +10,16 @@ public class EvolutionManager : MonoBehaviour
     public int evolutionStage = 0;
     private int oldEvolutionStage = 0;
 
+    public static EvolutionManager Instance;
+
     void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        Instance = this;
         // Ensure evolution mechanic persists in every life stage
         DontDestroyOnLoad(this.gameObject);
     }
@@ -35,6 +43,13 @@ public class EvolutionManager : MonoBehaviour
     public void evolve()
     {
         evolutionStage++;
+    }
+
+    // Sets stage without triggering switchScene (used by Level Select)
+    public void SetStageDirect(int stage)
+    {
+        evolutionStage = stage;
+        oldEvolutionStage = stage;
     }
 
     public void evolveToJerboa()

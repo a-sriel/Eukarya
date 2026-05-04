@@ -151,9 +151,11 @@ public class PlayerMechanics : MonoBehaviour
             }
         }
 
-        if (health <= 0)
+        if (health <= 0 && !dead)
         {
             dead = true;
+            if (SFXManager.Instance != null)
+                SFXManager.Instance.PlayDeath();
         }
     }
 
@@ -184,16 +186,29 @@ public class PlayerMechanics : MonoBehaviour
     public void UpdateHealth(int damageAmount)
     {
         health -= damageAmount;
+
+        if (SFXManager.Instance != null)
+        {
+            if (damageAmount > 0) SFXManager.Instance.PlayHurt();
+            else if (damageAmount < 0) SFXManager.Instance.PlayEat();
+        }
     }
 
     public void UpdateStamina(int energyAmount)
     {
         stamina -= energyAmount;
+
+        if (stamina <= 0 && SFXManager.Instance != null)
+            SFXManager.Instance.PlayStaminaDepleted();
     }
 
     public void UpdateEvolutionProgress(int progressAmount)
     {
+        bool wasReady = evolutionProgress == 5;
         evolutionProgress += progressAmount;
+
+        if (!wasReady && evolutionProgress == 5 && SFXManager.Instance != null)
+            SFXManager.Instance.PlayEvolutionReady();
     }
 
     public int GetLifeStage()
