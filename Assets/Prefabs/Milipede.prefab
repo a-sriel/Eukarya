@@ -179,13 +179,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3346326746087045740}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: 0, y: 0.7072302, z: 0.7069834, w: 0}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6120071922098123936}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 180, z: 0}
 --- !u!33 &1338837152491335539
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -273,8 +273,9 @@ GameObject:
   - component: {fileID: 5028085260562678219}
   - component: {fileID: 6537177600356147416}
   - component: {fileID: 2423230736261853026}
-  - component: {fileID: 4719157290856262445}
   - component: {fileID: 8326966079383302891}
+  - component: {fileID: 1204475485134686996}
+  - component: {fileID: 838951880321512423}
   m_Layer: 0
   m_Name: Milipede
   m_TagString: Untagged
@@ -399,23 +400,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4719157290856262445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8222622289603225412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfeb8ff23ba636344890130cfd57e3cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fleeSpeed: 12
-  detectionDistance: 30
-  wanderSpeed: 4
-  wanderRadius: 40
-  wanderWaitTime: 2.5
 --- !u!64 &8326966079383302891
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -438,3 +422,43 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 8338f7fc9bd10fc42a691f0cb3af5e67, type: 3}
+--- !u!195 &1204475485134686996
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8222622289603225412}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &838951880321512423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8222622289603225412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad6303c3a6240b94987e4b10b2c8796f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fleeSpeed: 12
+  detectionDistance: 30
+  fleeDistanceMultiplier: 1.5
+  wanderSpeed: 4
+  wanderRadius: 40
+  wanderWaitTime: 2.5

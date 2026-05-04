@@ -7,6 +7,7 @@ public class PlayerMechanics : MonoBehaviour
     public int health = 50;
     public int stamina = 50;
     public int evolutionProgress = 0;
+    public int staminaRegen = 1;
 
     private int maxStamina;
 
@@ -83,7 +84,7 @@ public class PlayerMechanics : MonoBehaviour
         // Replenish stamina
         if (stamina < maxStamina)
         {
-            stamina++;
+            stamina += staminaRegen;
         }
 
         attacking = animationController.isAttacking();

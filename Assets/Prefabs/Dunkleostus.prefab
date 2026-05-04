@@ -88,8 +88,8 @@ MonoBehaviour:
   rotationSpeed: 5
   minY: -20
   maxY: 80
-  chaseSpeed: 20
-  detectionDistance: 60
+  chaseSpeed: 25
+  detectionDistance: 80
   enableBursts: 1
   burstMultiplier: 2
   burstDuration: 0.5

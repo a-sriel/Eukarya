@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Spawner : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class Spawner : MonoBehaviour
     [Header("Spawn Settings")]
     public int predatorCount = 2;
     public int preyCount = 6;
+    public bool useNavMeshSnapping = false; // Set true for terrestrial creatures
 
     // Keep track of how many creatures left alive in game
     private int currentPredators = 0;
@@ -97,6 +99,15 @@ public class Spawner : MonoBehaviour
                 ySpawnLevel,
                 transform.position.z + randomY
             );
+
+            // Conditional Snapping Logic
+            if (useNavMeshSnapping)
+            {
+                if (NavMesh.SamplePosition(spawnPosition, out NavMeshHit hit, 10f, NavMesh.AllAreas))
+                {
+                    spawnPosition = hit.position;
+                }
+            }
 
             // Add entity to game
             GameObject activePrefab = Instantiate(prefab, spawnPosition, Quaternion.identity);
