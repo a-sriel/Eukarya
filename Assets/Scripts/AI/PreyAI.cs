@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PreyAI : MonoBehaviour
 {
     [Header("Flee Settings")]
@@ -14,22 +15,25 @@ public class PreyAI : MonoBehaviour
     public float wanderWaitTime = 2.5f;
 
     private Transform player;
+    private Rigidbody rb;
     private Vector2 wanderTarget;
     private float wanderTimer;
 
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
+
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null) player = playerObj.transform;
 
         PickNewWanderTarget();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (player == null) return;
 
-        Vector2 myPos2D = new Vector2(transform.position.x, transform.position.z);
+        Vector2 myPos2D = new Vector2(rb.position.x, rb.position.z);
         Vector2 playerPos2D = new Vector2(player.position.x, player.position.z);
 
         float distanceToPlayer = Vector2.Distance(myPos2D, playerPos2D);
@@ -48,28 +52,28 @@ public class PreyAI : MonoBehaviour
     {
         Vector2 directionAway2D = (myPos - playerPos).normalized;
 
-        Vector3 moveVector = new Vector3(directionAway2D.x, 0f, directionAway2D.y);
+        Vector2 nextPos2D = myPos + (directionAway2D * fleeSpeed * Time.fixedDeltaTime);
 
-        transform.Translate(moveVector * fleeSpeed * Time.deltaTime, Space.World);
+        rb.MovePosition(new Vector3(nextPos2D.x, rb.position.y, nextPos2D.y));
     }
 
     void WanderAround(Vector2 myPos)
     {
-        wanderTimer -= Time.deltaTime;
+        wanderTimer -= Time.fixedDeltaTime;
 
         if (wanderTimer <= 0)
         {
             PickNewWanderTarget();
         }
 
-        Vector2 newPos2D = Vector2.MoveTowards(myPos, wanderTarget, wanderSpeed * Time.deltaTime);
-        transform.position = new Vector3(newPos2D.x, transform.position.y, newPos2D.y);
+        Vector2 nextPos2D = Vector2.MoveTowards(myPos, wanderTarget, wanderSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(new Vector3(nextPos2D.x, rb.position.y, nextPos2D.y));
     }
 
     void PickNewWanderTarget()
     {
         Vector2 randomOffset = Random.insideUnitCircle * wanderRadius;
-        wanderTarget = new Vector2(transform.position.x, transform.position.z) + randomOffset;
+        wanderTarget = new Vector2(rb.position.x, rb.position.z) + randomOffset;
         wanderTimer = wanderWaitTime;
     }
 }

@@ -301,8 +301,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 299991c1d12b79741be29aeac9c34ea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseSpeed: 7
-  detectionDistance: 25
-  wanderSpeed: 3
+  chaseSpeed: 12
+  detectionDistance: 30
+  wanderSpeed: 6
   wanderRadius: 40
   wanderWaitTime: 2.5

@@ -3783,7 +3783,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fddd78af3c4d114c90864f1d7377e70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 200
+  walkSpeed: 150
+  sprintMultiplier: 1.5
   floatForce: 2
   canSprint: 1
   canJump: 0
@@ -4802,7 +4803,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
-  stamina: 1000
+  stamina: 2000
   evolutionProgress: 0
   readyToEvolve: 0
   evolutionStage: 1

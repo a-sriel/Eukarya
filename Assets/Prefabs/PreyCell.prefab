@@ -151,7 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fleeSpeed: 12
   detectionDistance: 30
-  wanderSpeed: 4
+  wanderSpeed: 6
   wanderRadius: 40
   wanderWaitTime: 2.5
 --- !u!1 &6519125618197278628

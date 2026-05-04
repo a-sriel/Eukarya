@@ -103,7 +103,7 @@ public class PlayerMechanics : MonoBehaviour
         // Restart cooldown timer
         if (evolutionProgress >= 1 && cooldown <= 0)
         {
-            cooldown = 25f;
+            cooldown = 60f;
         }
 
         if (evolutionProgress < 5)
@@ -174,6 +174,7 @@ public class PlayerMechanics : MonoBehaviour
 
     public int GetEvolutionProgress()
     {
+        cooldown = 60;
         return evolutionProgress;
     }
     // End getters for player stats

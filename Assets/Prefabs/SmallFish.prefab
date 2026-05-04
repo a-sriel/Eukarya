@@ -172,13 +172,13 @@ MonoBehaviour:
   rotationSpeed: 10
   minY: -20
   maxY: 80
-  fleeSpeed: 35
+  fleeSpeed: 25
   detectionDistance: 30
   fleeDirectionVariance: 0.8
   enableBursts: 1
   burstMultiplier: 1.5
   burstDuration: 0.3
-  burstCooldown: 1.5
+  burstCooldown: 2
   wanderSpeed: 20
   wanderRadius: 150
   wanderWaitTime: 4

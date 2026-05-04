@@ -108,13 +108,15 @@ MonoBehaviour:
   useRotation: 0
   orientationAxis: 0
   rotationSpeed: 4
-  fleeSpeed: 20
+  minY: 5
+  maxY: 150
+  fleeSpeed: 10
   detectionDistance: 30
   fleeDirectionVariance: 0.75
   enableBursts: 1
-  burstMultiplier: 3
-  burstDuration: 1
-  burstCooldown: 3
+  burstMultiplier: 2
+  burstDuration: 0.5
+  burstCooldown: 4
   wanderSpeed: 4
   wanderRadius: 40
   wanderWaitTime: 2.5

@@ -108,12 +108,14 @@ MonoBehaviour:
   useRotation: 0
   orientationAxis: 1
   rotationSpeed: 5
-  chaseSpeed: 30
-  detectionDistance: 35
+  minY: 5
+  maxY: 150
+  chaseSpeed: 20
+  detectionDistance: 50
   enableBursts: 1
   burstMultiplier: 1.5
   burstDuration: 1
-  burstCooldown: 1.5
+  burstCooldown: 3
   wanderSpeed: 10
   wanderRadius: 40
   wanderWaitTime: 2.5

@@ -195,7 +195,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fddd78af3c4d114c90864f1d7377e70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 150
+  walkSpeed: 5
+  sprintMultiplier: 1.5
+  floatForce: 2
+  canSprint: 1
+  canJump: 0
+  rotationSpeed: 10
+  facingOffset: 0
+  enableRotation: 1
+  enableFloating: 0
 --- !u!64 &7234586988777948901
 MeshCollider:
   m_ObjectHideFlags: 0
