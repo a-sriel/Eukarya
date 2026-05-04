@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     // Player's movement speed
     private float speed;
     public float walkSpeed = 15;
+    public float sprintMultiplier = 1.5f;
     private float sprintSpeed = 0;
 
     // Stats for swimming scenes
@@ -40,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
         // Store inputted speed
         speed = walkSpeed;
-        sprintSpeed = walkSpeed * 2.5f;
+        sprintSpeed = walkSpeed * sprintMultiplier;
 
         floating = new Vector3(0.0f, floatForce, 0.0f);
         rb.useGravity = true;
