@@ -1331,6 +1331,12 @@ MonoBehaviour:
   uiClick:
     clip: {fileID: 8300000, guid: 0b970db81f9290544b9f20eb939e5b9d, type: 3}
     volume: 1
+  sugargliderFlap:
+    clip: {fileID: 8300000, guid: 1e60d6a94a87d1d43ba1f78eeedf5f1c, type: 3}
+    volume: 1
+  jerboaJump:
+    clip: {fileID: 8300000, guid: 61ec7f95c52959b458ade1cb39c283ae, type: 3}
+    volume: 1.58
   baseVolume: 0.116
   optionsMultiplier: 1
 --- !u!82 &813190410
