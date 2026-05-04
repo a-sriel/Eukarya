@@ -170,7 +170,8 @@ MonoBehaviour:
   useRotation: 1
   orientationAxis: 0
   rotationSpeed: 10
-  drag: 3
+  minY: -20
+  maxY: 80
   fleeSpeed: 35
   detectionDistance: 30
   fleeDirectionVariance: 0.8

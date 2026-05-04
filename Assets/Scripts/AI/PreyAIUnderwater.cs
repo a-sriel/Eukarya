@@ -11,7 +11,10 @@ public class PreyAIUnderwater : MonoBehaviour
     public bool useRotation = true;
     public FacingAxis orientationAxis = FacingAxis.Forward;
     public float rotationSpeed = 4f;
-    public float drag = 3f;
+
+    [Header("Boundary Settings")]
+    public float minY = -20f;
+    public float maxY = 84f;
 
     [Header("Flee Settings")]
     public float fleeSpeed = 12f;
@@ -40,7 +43,6 @@ public class PreyAIUnderwater : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.drag = drag;
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null) player = playerObj.transform;
 
@@ -92,16 +94,23 @@ public class PreyAIUnderwater : MonoBehaviour
 
     void MoveAndRotate(Vector3 targetPos, float speed)
     {
-        Vector3 direction = (targetPos - transform.position).normalized;
+        Vector3 newPos = Vector3.MoveTowards(rb.position, targetPos, speed * Time.deltaTime);
 
-        rb.velocity = direction * speed;
+        // Apply hard vertical bounds
+        newPos.y = Mathf.Clamp(newPos.y, minY, maxY);
 
-        if (useRotation && direction != Vector3.zero)
+        rb.MovePosition(newPos);
+
+        if (useRotation)
         {
-            Quaternion targetRotation = (orientationAxis == FacingAxis.Up)
-                ? Quaternion.LookRotation(Vector3.Cross(direction, transform.right), direction)
-                : Quaternion.LookRotation(direction);
-            rb.MoveRotation(Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime));
+            Vector3 direction = (targetPos - transform.position).normalized;
+            if (direction != Vector3.zero)
+            {
+                Quaternion targetRotation = (orientationAxis == FacingAxis.Up)
+                    ? Quaternion.LookRotation(Vector3.Cross(direction, transform.right), direction)
+                    : Quaternion.LookRotation(direction);
+                rb.MoveRotation(Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime));
+            }
         }
     }
 
@@ -115,7 +124,11 @@ public class PreyAIUnderwater : MonoBehaviour
     void PickNewWanderTarget()
     {
         Vector3 randomOffset = Random.insideUnitSphere * wanderRadius;
-        wanderTarget = transform.position + randomOffset;
+        Vector3 target = transform.position + randomOffset;
+
+        target.y = Mathf.Clamp(target.y, minY, maxY);
+
+        wanderTarget = target;
         wanderTimer = wanderWaitTime;
     }
 }

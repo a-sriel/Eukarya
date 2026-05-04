@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 124642767743794467}
   - component: {fileID: 8032820383574823963}
   - component: {fileID: 4083804465549222242}
-  - component: {fileID: 3718471223886633749}
+  - component: {fileID: 7576205736176236453}
   m_Layer: 0
   m_Name: Dunkleostus
   m_TagString: Aquatic
@@ -71,7 +71,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3718471223886633749
+--- !u!114 &7576205736176236453
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -80,11 +80,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 4242463742301572766}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 299991c1d12b79741be29aeac9c34ea7, type: 3}
+  m_Script: {fileID: 11500000, guid: d5f4e5bb8759300448837a036b89bc99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseSpeed: 7
-  detectionDistance: 25
+  useRotation: 1
+  orientationAxis: 0
+  rotationSpeed: 5
+  minY: -20
+  maxY: 80
+  chaseSpeed: 35
+  detectionDistance: 60
+  enableBursts: 1
+  burstMultiplier: 1.5
+  burstDuration: 0.5
+  burstCooldown: 2
   wanderSpeed: 3
   wanderRadius: 40
   wanderWaitTime: 2.5
@@ -285,13 +294,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7371823094531886378}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0.7071068, w: 0}
   m_LocalPosition: {x: 0.36, y: 0, z: -0.26}
   m_LocalScale: {x: 50, y: 50.000053, z: 50.000053}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 124642767743794467}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 180, z: 0}
 --- !u!33 &4812926419073713978
 MeshFilter:
   m_ObjectHideFlags: 0
