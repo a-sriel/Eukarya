@@ -2,26 +2,27 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class PreyAITerrestrial : MonoBehaviour
+public class PredatorAITerrestrial : MonoBehaviour
 {
-    [Header("Flee Settings")]
-    public float fleeSpeed = 12f;
-    public float detectionDistance = 30f;
-    public float fleeDistanceMultiplier = 1.5f;
+    [Header("Chase Settings")]
+    public float chaseSpeed = 7f;
+    public float detectionDistance = 25f;
+    public float chaseUpdateInterval = 0.1f; // How often to recalculate the player's position
 
     [Header("Wander Settings")]
-    public float wanderSpeed = 4f;
+    public float wanderSpeed = 3f;
     public float wanderRadius = 40f;
     public float wanderWaitTime = 2.5f;
 
     private NavMeshAgent agent;
     private Transform player;
     private float wanderTimer;
-    private float fleeUpdateTimer;
+    private float chaseTimer;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null) player = playerObj.transform;
 
@@ -32,16 +33,17 @@ public class PreyAITerrestrial : MonoBehaviour
     {
         if (player == null || !agent.isOnNavMesh) return;
 
+        // DEBUG: Visualize the target destination
         if (agent.hasPath)
         {
-            Debug.DrawLine(transform.position, agent.destination, Color.red);
+            Debug.DrawLine(transform.position, agent.destination, Color.green);
         }
 
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
         if (distanceToPlayer <= detectionDistance)
         {
-            FleeFromPlayer();
+            ChasePlayer();
         }
         else
         {
@@ -49,22 +51,15 @@ public class PreyAITerrestrial : MonoBehaviour
         }
     }
 
-    void FleeFromPlayer()
+    void ChasePlayer()
     {
-        agent.speed = fleeSpeed;
+        agent.speed = chaseSpeed;
 
-        fleeUpdateTimer -= Time.deltaTime;
-        if (fleeUpdateTimer <= 0)
+        chaseTimer -= Time.deltaTime;
+        if (chaseTimer <= 0)
         {
-            Vector3 directionAway = (transform.position - player.position).normalized;
-            Vector3 fleeDestination = transform.position + (directionAway * detectionDistance * fleeDistanceMultiplier);
-
-            if (NavMesh.SamplePosition(fleeDestination, out NavMeshHit hit, 5f, NavMesh.AllAreas))
-            {
-                agent.SetDestination(hit.position);
-            }
-
-            fleeUpdateTimer = 0.2f;
+            agent.SetDestination(player.position);
+            chaseTimer = chaseUpdateInterval;
         }
     }
 
@@ -72,6 +67,7 @@ public class PreyAITerrestrial : MonoBehaviour
     {
         agent.speed = wanderSpeed;
 
+        // Check if we have arrived at the wander target
         if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
         {
             wanderTimer -= Time.deltaTime;
@@ -85,9 +81,11 @@ public class PreyAITerrestrial : MonoBehaviour
 
     void PickNewWanderTarget()
     {
+        // Calculate a random point on the XZ plane
         Vector3 randomDirection = Random.insideUnitSphere * wanderRadius;
         randomDirection += transform.position;
 
+        // Snap that point to the closest valid NavMesh position
         if (NavMesh.SamplePosition(randomDirection, out NavMeshHit hit, wanderRadius, NavMesh.AllAreas))
         {
             agent.SetDestination(hit.position);

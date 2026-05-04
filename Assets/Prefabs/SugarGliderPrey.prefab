@@ -237,9 +237,9 @@ GameObject:
   - component: {fileID: 1449033396039155255}
   - component: {fileID: 8875644467873649324}
   - component: {fileID: 4083804465549222242}
-  - component: {fileID: 7964516279090940703}
   - component: {fileID: 453393963610280016}
   - component: {fileID: 2070720985359659005}
+  - component: {fileID: 4713080843000727615}
   m_Layer: 0
   m_Name: SugarGliderPrey
   m_TagString: Untagged
@@ -363,25 +363,8 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &7964516279090940703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4242463742301572766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfeb8ff23ba636344890130cfd57e3cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fleeSpeed: 12
-  detectionDistance: 30
-  wanderSpeed: 4
-  wanderRadius: 40
-  wanderWaitTime: 2.5
 --- !u!114 &453393963610280016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -411,6 +394,24 @@ Animation:
   m_AnimatePhysics: 0
   m_UpdateMode: 0
   m_CullingType: 0
+--- !u!114 &4713080843000727615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4242463742301572766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cbee080e20e55948a410720a0753bc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fleeSpeed: 30
+  detectionDistance: 40
+  wanderSpeed: 20
+  wanderRadius: 60
+  wanderWaitTime: 7
+  rotationSpeed: 10
 --- !u!1 &4808375958014648252
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,13 +683,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8021147436697565625}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100.000015, z: 100.000015}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 124642767743794467}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!137 &1156524723388714563
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0

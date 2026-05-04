@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 1449033396039155255}
   - component: {fileID: 8875644467873649324}
   - component: {fileID: 4083804465549222242}
-  - component: {fileID: 7964516279090940703}
+  - component: {fileID: -8028723326530724439}
+  - component: {fileID: 653121364445427711}
   m_Layer: 0
   m_Name: JerboaPrey
   m_TagString: Untagged
@@ -138,7 +139,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7964516279090940703
+--- !u!195 &-8028723326530724439
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4242463742301572766}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &653121364445427711
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,14 +170,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 4242463742301572766}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfeb8ff23ba636344890130cfd57e3cb, type: 3}
+  m_Script: {fileID: 11500000, guid: ad6303c3a6240b94987e4b10b2c8796f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fleeSpeed: 12
-  detectionDistance: 30
-  wanderSpeed: 4
-  wanderRadius: 40
-  wanderWaitTime: 2.5
+  fleeSpeed: 70
+  detectionDistance: 40
+  fleeDistanceMultiplier: 1.5
+  wanderSpeed: 20
+  wanderRadius: 80
+  wanderWaitTime: 5
 --- !u!1 &6519125618197278628
 GameObject:
   m_ObjectHideFlags: 0
