@@ -32,6 +32,12 @@ public class WinScreenManager : MonoBehaviour
 
     void Start()
     {
-        winScreen.SetActive(false);
+        winScreen.SetActive(true);
+        Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        if (MusicManager.Instance != null)
+            MusicManager.Instance.StopMusic();
     }
 }
