@@ -126,6 +126,9 @@ public class PlayerMechanics : MonoBehaviour
                     terrestrialPhase = true;
                     evolutionProgress = 0;
 
+                    if (MusicManager.Instance != null)
+                        MusicManager.Instance.PlayTrack("forest");
+
                     // Enable land movement
                 }
                 else if (evolveToJerboa)

@@ -6777,6 +6777,64 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5839324448388172288, guid: 13451e1cc3c0822459588794ef238b39, type: 3}
   m_PrefabInstance: {fileID: 1305958897}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1312061543
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1312061545}
+  - component: {fileID: 1312061544}
+  - component: {fileID: 1312061546}
+  m_Layer: 0
+  m_Name: StageMusicTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1312061544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312061543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f45518179c464464287804b65ca8edc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trackName: underwater
+--- !u!4 &1312061545
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312061543}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 562.1003, y: 809.8437, z: 7456.527}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1312061546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312061543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd55ee3240b9c9042857648db3bd2e1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1317633425
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11009,3 +11067,4 @@ SceneRoots:
   - {fileID: 1060312373}
   - {fileID: 1839853130}
   - {fileID: 8024630026895445692}
+  - {fileID: 1312061545}
