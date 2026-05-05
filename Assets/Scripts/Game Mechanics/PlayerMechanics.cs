@@ -5,6 +5,10 @@ using UnityEngine;
 public class PlayerMechanics : MonoBehaviour
 {
     public int health = 50;
+    public int maxHealth = 50;
+    public int maxOverhealth = 50;
+    public float overhealthDecayInterval = 2f;
+    private float overhealthDecayTimer = 0f;
     public int stamina = 50;
     public int evolutionProgress = 0;
     public int staminaRegen = 1;
@@ -87,6 +91,21 @@ public class PlayerMechanics : MonoBehaviour
             stamina += staminaRegen;
         }
 
+        // Overhealth slowly decays back down to maxHealth
+        if (health > maxHealth)
+        {
+            overhealthDecayTimer += Time.deltaTime;
+            if (overhealthDecayTimer >= overhealthDecayInterval)
+            {
+                overhealthDecayTimer = 0f;
+                health--;
+            }
+        }
+        else
+        {
+            overhealthDecayTimer = 0f;
+        }
+
         attacking = animationController.isAttacking();
 
         // Each evolution progress point has a cooldown timer
@@ -113,7 +132,7 @@ public class PlayerMechanics : MonoBehaviour
         }
 
         // Toggle evolution function
-        if (evolutionProgress == 5 && evolutionStage <= 5)
+        if (evolutionProgress >= 5 && evolutionStage <= 5)
         {
             readyToEvolve = true;
 
@@ -141,7 +160,7 @@ public class PlayerMechanics : MonoBehaviour
             }
         }
 
-        if (evolutionProgress == 5 && evolutionStage > 5)
+        if (evolutionProgress >= 5 && evolutionStage > 5)
         {
             readyToEvolve = true;
 
@@ -186,6 +205,8 @@ public class PlayerMechanics : MonoBehaviour
     public void UpdateHealth(int damageAmount)
     {
         health -= damageAmount;
+        int absoluteCap = maxHealth + maxOverhealth;
+        if (health > absoluteCap) health = absoluteCap;
 
         if (SFXManager.Instance != null)
         {
@@ -193,6 +214,9 @@ public class PlayerMechanics : MonoBehaviour
             else if (damageAmount < 0) SFXManager.Instance.PlayEat();
         }
     }
+
+    public int GetMaxHealth() { return maxHealth; }
+    public int GetMaxOverhealth() { return maxOverhealth; }
 
     public void UpdateStamina(int energyAmount)
     {
@@ -204,10 +228,10 @@ public class PlayerMechanics : MonoBehaviour
 
     public void UpdateEvolutionProgress(int progressAmount)
     {
-        bool wasReady = evolutionProgress == 5;
+        bool wasReady = evolutionProgress >= 5;
         evolutionProgress += progressAmount;
 
-        if (!wasReady && evolutionProgress == 5 && SFXManager.Instance != null)
+        if (!wasReady && evolutionProgress >= 5 && SFXManager.Instance != null)
             SFXManager.Instance.PlayEvolutionReady();
     }
 
@@ -223,24 +247,31 @@ public class PlayerMechanics : MonoBehaviour
 
     public void UpdateJerboaProgress(int progressAmount)
     {
-        evolveToJerboa = true;
-        evolveToSugarGlider = false;
-
-        sugarGliderProgress = 0;
         jerboaProgress += progressAmount;
-
-        evolutionProgress = jerboaProgress;
+        SyncDurlsthoEvolveType();
+        evolutionProgress = jerboaProgress + sugarGliderProgress;
     }
 
     public void UpdateSugarGliderProgress(int progressAmount)
     {
-        evolveToSugarGlider = true;
-        evolveToJerboa = false;
-
-        jerboaProgress = 0;
         sugarGliderProgress += progressAmount;
+        SyncDurlsthoEvolveType();
+        evolutionProgress = jerboaProgress + sugarGliderProgress;
+    }
 
-        evolutionProgress = sugarGliderProgress;
+    void SyncDurlsthoEvolveType()
+    {
+        // Tie or jerboa higher → default to ground (jerboa)
+        if (sugarGliderProgress > jerboaProgress)
+        {
+            evolveToSugarGlider = true;
+            evolveToJerboa = false;
+        }
+        else
+        {
+            evolveToJerboa = true;
+            evolveToSugarGlider = false;
+        }
     }
 
     public bool breachedSurface()
