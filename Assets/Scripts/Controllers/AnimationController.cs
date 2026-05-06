@@ -35,8 +35,8 @@ public class AnimationController : MonoBehaviour
 
         stamina = playerMechanics.GetStamina();
 
-        // Reset attack; only attack for one frame
-        attacking = false;
+        // Attack flag follows the animation so prey have multiple frames to detect it
+        attacking = anim.IsPlaying("attack");
 
         if (anim.IsPlaying("attack"))
             freezePlayer = true;
@@ -60,10 +60,8 @@ public class AnimationController : MonoBehaviour
             }
         }
 
-        print(playerMechanics.GetLifeStage());
         if (playerMechanics.GetLifeStage() == 7)
         {
-            print("Sugar");
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 if (SFXManager.Instance != null)

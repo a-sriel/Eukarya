@@ -47,7 +47,6 @@ public class PlayerMechanics : MonoBehaviour
     void Start()
     {
         maxStamina = stamina;
-        print(maxStamina);
 
         animationController = gameObject.GetComponent<AnimationController>();
         playerController = gameObject.GetComponent<PlayerController>();
@@ -82,7 +81,6 @@ public class PlayerMechanics : MonoBehaviour
                 //hitBox.layer = LayerMask.NameToLayer("BreachedSurface");
                 gameObject.layer = LayerMask.NameToLayer("BreachedSurface");
                 foreach (Transform child in transform) child.gameObject.layer = LayerMask.NameToLayer("BreachedSurface");
-                print("BREACHED SURFACE");
             }
         }
         // Replenish stamina
@@ -140,7 +138,6 @@ public class PlayerMechanics : MonoBehaviour
             {
                 if (evolutionStage == 4 && aquaticPhase) // Only fully evolve upon terrestrial phase
                 {
-                    print("AQUATIC");
                     // Reset evo progress
                     aquaticPhase = false;
                     terrestrialPhase = true;

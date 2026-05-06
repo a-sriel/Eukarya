@@ -17,34 +17,44 @@ public class PreyMechanics : MonoBehaviour
     int lifeStage;
 
     bool inRadius = false;
+    bool attackPreviouslyActive = false;
     public string preyTag;
 
     // Start is called before the first frame update
     void Start()
     {
-        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-        if (playerObj != null) player = playerObj;
-
         preyTag = gameObject.tag;
+        TryFindPlayer();
+    }
 
+    void TryFindPlayer()
+    {
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj == null) return;
+        player = playerObj;
         playerMechanics = player.GetComponentInParent<PlayerMechanics>();
+        if (playerMechanics == null) return;
         breachedSurface = playerMechanics.breachedSurface();
         lifeStage = playerMechanics.GetLifeStage();
     }
 
     // Detect if within player hitbox radius
+    bool IsPlayerCollider(Collider other)
+    {
+        return other.gameObject.CompareTag("Player") || other.GetComponentInParent<PlayerMechanics>() != null;
+    }
+
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (IsPlayerCollider(other))
         {
             inRadius = true;
-            print("PLAYER");
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (IsPlayerCollider(other))
         {
             inRadius = false;
         }
@@ -53,11 +63,18 @@ public class PreyMechanics : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (inRadius)
+        if (playerMechanics == null)
         {
-            //playerMechanics = player.GetComponentInParent<PlayerMechanics>();
-            // Check if attack animation is playing
-            if (playerMechanics.isAttacking())
+            TryFindPlayer();
+            if (playerMechanics == null) return;
+        }
+
+        bool attackActive = playerMechanics.isAttacking();
+        bool attackJustStarted = attackActive && !attackPreviouslyActive;
+        attackPreviouslyActive = attackActive;
+
+        if (inRadius && attackJustStarted)
+        {
             {
                 // When player attacks prey, decrease its health
                 health -= damageAmount;

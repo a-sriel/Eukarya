@@ -15,6 +15,7 @@ public class PredatorMechanics : MonoBehaviour
     private PlayerMechanics playerMechanics;
 
     bool inRadius = false;
+    bool attackPreviouslyActive = false;
 
     float cooldownPeriod = 3f;
     float attackCooldown = 0f;
@@ -27,21 +28,31 @@ public class PredatorMechanics : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-        if (playerObj != null) player = playerObj;
-
         predatorTag = gameObject.tag;
+        TryFindPlayer();
+    }
 
+    void TryFindPlayer()
+    {
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj == null) return;
+        player = playerObj;
         playerMechanics = player.GetComponentInParent<PlayerMechanics>();
+        if (playerMechanics == null) return;
         breachedSurface = playerMechanics.breachedSurface();
         lifeStage = playerMechanics.GetLifeStage();
     }
 
 
     // Detect if within player hitbox radius
+    bool IsPlayerCollider(Collider other)
+    {
+        return other.gameObject.CompareTag("Player") || other.GetComponentInParent<PlayerMechanics>() != null;
+    }
+
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (IsPlayerCollider(other))
         {
             inRadius = true;
         }
@@ -49,7 +60,7 @@ public class PredatorMechanics : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (IsPlayerCollider(other))
         {
             inRadius = false;
         }
@@ -58,6 +69,12 @@ public class PredatorMechanics : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (playerMechanics == null)
+        {
+            TryFindPlayer();
+            if (playerMechanics == null) return;
+        }
+
         // ****** Attack timer
         // Tick
         if (attackCooldown > 0)
@@ -70,10 +87,12 @@ public class PredatorMechanics : MonoBehaviour
             }
         }
 
+        bool attackActive = playerMechanics.isAttacking();
+        bool attackJustStarted = attackActive && !attackPreviouslyActive;
+        attackPreviouslyActive = attackActive;
+
         if (inRadius)
         {
-            //playerMechanics = player.GetComponentInParent<PlayerMechanics>();
-
             // Attack player, then initiate cooldown timer
             if (attackCooldown <= 0)
             {
@@ -83,8 +102,7 @@ public class PredatorMechanics : MonoBehaviour
                 playerMechanics.UpdateHealth(depleteAmount);
             }
 
-            // Check if attack animation is playing
-            if (playerMechanics.isAttacking())
+            if (attackJustStarted)
             {
                 // When player collides with predator, decrease its health
                 health -= damageAmount;
